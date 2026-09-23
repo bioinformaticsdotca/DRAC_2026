@@ -1,4 +1,4 @@
-awsunix-primer-info
+drac-primer-info
 data-download
 schedule
 meet-your-faculty

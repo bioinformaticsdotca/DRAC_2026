@@ -1,4 +1,4 @@
-\contentsline {chapter}{\numberline {1}AWS/UNIX primer info}{5}{chapter.1}%
+\contentsline {chapter}{\numberline {1}DRAC primer info}{5}{chapter.1}%
 \contentsline {subsection}{\numberline {1.0.1}Data download}{5}{subsection.1.0.1}%
 \contentsline {subsection}{\numberline {1.0.2}Schedule}{5}{subsection.1.0.2}%
 \contentsline {chapter}{\numberline {2}Meet Your Faculty}{7}{chapter.2}%

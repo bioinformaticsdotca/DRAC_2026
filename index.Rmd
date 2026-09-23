@@ -1,19 +1,19 @@
 --- 
-title: "AWS/UNIX 2026"
-faculty: Material by Zhibin Lu & Alyona Ivanova
+title: "DRAC Primer Session 2026"
+faculty: Material by Jiarui Li
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-url: https://bioinformaticsdotca.github.io/AWS-UNIX_2026/ 
+url: https://bioinformaticsdotca.github.io/DRAC_2026/ 
 cover-image: img/bioinformatics_logo.png
 description: |
-  Wwbsite for the Canadian Bioinformatics Workshops' AWS/Unix primer
+  Website for the Canadian Bioinformatics Workshops' DRAC Primer Session
 link-citations: yes
-github-repo: cbw-dev/AWS-UNIX_2026 # CHANGE THIS TO YOUR OWN REPO
+github-repo: cbw-dev/DRAC_2026 # CHANGE THIS TO YOUR OWN REPO
 favicon: img/favicon.ico
 ---
 
-# AWS/UNIX primer info
+# DRAC primer info
 
 The UNIX exercises here are modified versions of the [Software Carpentry Unix shell lesson](https://swcarpentry.github.io/shell-novice/). [Licensed under CC-BY 4.0 2018–2021 by The Carpentries.](https://carpentries.org/)
 
@@ -32,9 +32,9 @@ You will need a UNIX environment (like a Linux/Mac computer or Windows Subsystem
 | (ET) |                      Module                     |
 |:-----:|:-----------------------------------------------:|
 | 10:00 |               Welcome Introduction              |
-| 10:10 |            Module 1: Logging into AWS           |
+| 10:10 |            Module 1: Logging into DRAC           |
 | 11:10 |                   Short Break                   |
-| 11:15 | Module 2: Introduction to the UNIX Command Line |
+| 11:15 | Module 2: Introduction to the Command Line |
 | 11:35 |           Module 3: File Manipulation           |
 | 12:05 |                    Long Break                   |
 | 13:05 |  Module 4: Searching and Sorting Through Files  |

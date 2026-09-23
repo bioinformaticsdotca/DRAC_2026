@@ -77,6 +77,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -135,11 +136,11 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={AWS/UNIX 2026},
+  pdftitle={DRAC Primer Session 2026},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{AWS/UNIX 2026}
+\title{DRAC Primer Session 2026}
 \author{}
 \date{\vspace{-2.5em}}
 
@@ -150,7 +151,7 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\chapter{AWS/UNIX primer info}\label{awsunix-primer-info}
+\chapter{DRAC primer info}\label{drac-primer-info}
 
 The UNIX exercises here are modified versions of the \href{https://swcarpentry.github.io/shell-novice/}{Software Carpentry Unix shell lesson}. \href{https://carpentries.org/}{Licensed under CC-BY 4.0 2018--2021 by The Carpentries.}
 
@@ -172,6 +173,7 @@ You will need a UNIX environment (like a Linux/Mac computer or Windows Subsystem
 
 \textbf{Foundational Spatial 'Omics Analysis AWS/UNIX pre-session 2026}: Wednesday, September 23, 2026
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}cc@{}}
 \toprule\noalign{}
 (ET) & Module \\
@@ -180,9 +182,9 @@ You will need a UNIX environment (like a Linux/Mac computer or Windows Subsystem
 \bottomrule\noalign{}
 \endlastfoot
 10:00 & Welcome Introduction \\
-10:10 & Module 1: Logging into AWS \\
+10:10 & Module 1: Logging into DRAC \\
 11:10 & Short Break \\
-11:15 & Module 2: Introduction to the UNIX Command Line \\
+11:15 & Module 2: Introduction to the Command Line \\
 11:35 & Module 3: File Manipulation \\
 12:05 & Long Break \\
 13:05 & Module 4: Searching and Sorting Through Files \\
@@ -190,6 +192,7 @@ You will need a UNIX environment (like a Linux/Mac computer or Windows Subsystem
 14:05 & Module 5: Shell scripts \\
 15:00 & Finished \\
 \end{longtable}
+}
 
 \chapter{Meet Your Faculty}\label{meet-your-faculty}
 
@@ -217,7 +220,7 @@ Toronto, ON, Canada
 --- \href{mailto:alyona.ivanova@mail.utoronto.ca}{\nolinkurl{alyona.ivanova@mail.utoronto.ca}}
 \end{quote}
 
-Alyona is a graduate student at the University of Toronto pursuing PhD in Medical Sciences. Her research focuses on identifying novel therapies for targeting chemo-resistance in glioblastoma using spatial 'omics technologies. She works in close collaboration with clinicians, neuropathologists, scientists bridging the gap between clinical practice and fundamental lab research. Alyona is a Creative Director of Panoramics - A Vision, and an Executive Editor and Director of Distribution of the Institute of Medical Sciences Magazine.
+Alyona is a graduate student at the University of Toronto pursuing PhD in Medical Sciences. Her research focuses on identifying novel therapies for targeting chemo-resistance in glioblastoma using spatial `omics technologies. She works in close collaboration with clinicians, neuropathologists, scientists bridging the gap between clinical practice and fundamental lab research. Alyona is a Creative Director of Panoramics - A Vision, and an Executive Editor and Director of Distribution of the Institute of Medical Sciences Magazine.
 
 \subsection{Teaching Assistants}\label{teaching-assistants}
 
@@ -844,7 +847,7 @@ The redirection and pipes used in the last few commands are illustrated below:
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/img/redirects-and-pipes.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={redirects\_and\_pipes}]{img/redirects-and-pipes.png}}
 \caption{redirects\_and\_pipes}
 \end{figure}
 
