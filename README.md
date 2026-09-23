@@ -1,3 +1,3 @@
-## CBW AWS/UNIX primer 2026
+## CBW DRAC Primer Session 2026
 
-[Live website]([https://bioinformaticsdotca.github.io/AWS-UNIX_2026]
+[Live website]([https://bioinformaticsdotca.github.io/DRAC_2026])
