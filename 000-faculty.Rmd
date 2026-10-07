@@ -16,70 +16,32 @@ BIO GOES HERE-->
 
 
 
-#### Zhibin Lu (he/him)
+#### Jiarui Li
 
-<img src="./img/faculty/Zhibin-Lu.jpeg" width="200" alt="Photo of Zhibin Lu">
+<img src="./img/faculty/MISSINGHEADSHOT.png" width="200" alt="Photo of Zhibin Lu">
 
->Senior Manager, Digital Research <br>
-University Health Network <br>
-Toronto, ON, Canada 
+>JOB TITLE <br>
+INSTITUTION <br>
+LOCATION
 >
-> --- zhibin@gmail.com 
+> --- CONTACT INFO, IF PROVIDED
 
-
-Zhibin Lu is a senior manager at University Health Network Digital. He is responsible for UHN HPC operations and scientific software. He manages two HPC clusters at UHN, including system administration, user management, and maintenance of bioinformatics tools for HPC4health. He is also skilled in Next-Gen sequence data analysis and has developed and maintained bioinformatics pipelines at the Bioinformatics and HPC Core. He is a member of the Digital Research Alliance of Canada Bioinformatics National Team and Scheduling National Team.
-
-#### Alyona Ivanova
-
-<img src="./img/faculty/Alyona-Ivanova.JPG" width="200" alt="Photo of Alyona Ivanova">
-
->PhD Candidate  <br>
-University of Toronto, The Hospital for Sick Children <br>
-Toronto, ON, Canada 
->
-> --- alyona.ivanova@mail.utoronto.ca
-
-Alyona is a graduate student at the University of Toronto pursuing PhD in Medical Sciences. Her research focuses on identifying novel therapies for targeting chemo-resistance in glioblastoma using spatial ‘omics technologies. She works in close collaboration with clinicians, neuropathologists, scientists bridging the gap between clinical practice and fundamental lab research. Alyona is a Creative Director of Panoramics - A Vision, and an Executive Editor and Director of Distribution of the Institute of Medical Sciences Magazine. 
-
-### Teaching Assistants
-
-#### Aqsa Alam
-
-<img src="./img/faculty/aqsa-alam.jpeg" width="200" alt="Photo of Alyona Ivanova">
-
->Bioinformatician III  <br>
-Ontario Institute for Cancer Research <br>
-Toronto, Ontario, Canada 
->
-> --- aalam@oicr.on.ca
-
-Aqsa Alam is a bioinformatician in the Clinical Genome Interpretation team at the Ontario Institute of Cancer Research. Aqsa did her Honours BSc with high distinction in Biology and Physics at the University of Toronto Mississauga and her MSc in Cell and Systems Biology at the University of Toronto. Aqsa is passionate about communication and scientific outreach. Her current work focuses on genomic interpretation in cancer and supporting accredited clinical trials.
-
+BIO GOES HERE-->
 
 
 
 ### Facilitator
 
-#### Neha Ratti (she/her)
+#### Tian Rabbani
 
-<img src="./img/faculty/neha-ratti.jpg" width="200" alt="Photo of Neha Ratti">
+<img src="./img/faculty/tian-rabbani.png" width="350" alt="Photo of Tian Rabbani">
 
->Regional Coordinator, CBH Ontario <br>
-Canadian Bioinformatics Hub, University Health Network  <br>
-Toronto, ON, Canada 
+>Regional Coordinator, CBH British Columbia <br>
+Canadian Bioinformatics Hub, Simon Fraser University <br>
+Vancouver, BC,  Canada 
 >
-> --- ontario@bioinformatics.ca 
+> --- bc@bioinformatics.ca 
 
-Neha is passionate about advancing bioinformatics and data science training across the province. With a strong background in project management, event coordination, and stakeholder engagement, she strives to create impactful initiatives that foster collaboration and skill development. Her experience in organizing training programs, developing policies, and building supportive environments enables her to contribute to Ontario’s leadership in the bioinformatics community. 
+Tian completed her Master of Public Health in 2022 from Simon Fraser University and is currently a researcher and project lead at the Center for Infectious Disease Genomics and One Health (CIDGOH). She has been extensively involved in researching SARS-CoV-2 data-sharing through the Canadian COVID-19 Genomics Network (CanCOGeN), alongside leading efforts to understand metadata reporting in genomic epidemiology studies for outbreak and surveillance investigation. Her background in public health and knowledge in contextual data reporting intersect harmoniously to help inform current and future emergency response initiatives.
 
-#### Sian Brooks (she/her)
-
-<img src="./img/faculty/SianBrooks.JPG" width="200" alt="Photo of Sian Brooks">
-
->Regional Coordinator, CBH Ontario <br>
-Canadian Bioinformatics Hub, University Health Network  <br>
-Toronto, ON, Canada 
->
-> --- ontario@bioinformatics.ca 
-
-Sian Brooks is the Ontario Co-Regional Coordinator for the Canadian Bioinformatics Hub. With over eight years of experience in the healthcare field and a background in office administration and event coordination, Sian brings a steady, detail-oriented approach to program delivery. She is committed to fostering a collaborative and supportive environment for trainees and researchers alike, helping to strengthen Ontario's standing within the national bioinformatics community.
+As British Columbia’s regional coordinator for the Canadian Bioinformatics Hub, Tian is passionate about and dedicated to connecting bioinformatics communities and groups across the province. She aims to grow, develop, and expand data science and bioinformatics tools and training materials for prospective or new professionals, as well as for those looking to advance in their current careers. Tian believes accessibility, access, and availability of these tools and training opportunities are the cornerstone of growing our bioinformatics communities across the region.

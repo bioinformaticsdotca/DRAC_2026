@@ -13,33 +13,29 @@ github-repo: cbw-dev/DRAC_2026 # CHANGE THIS TO YOUR OWN REPO
 favicon: img/favicon.ico
 ---
 
-# DRAC primer info
+# DRAC Primer Info
 
-The UNIX exercises here are modified versions of the [Software Carpentry Unix shell lesson](https://swcarpentry.github.io/shell-novice/). [Licensed under CC-BY 4.0 2018–2021 by The Carpentries.](https://carpentries.org/)
+Coming soon!
 
 ### Data download
-We will be using Amazon Web Services for the primer session. If you are not able to attend this session live, you can download the data we used here: 
 
-* [data.zip](https://drive.google.com/file/d/1Rckn6rUl9Tv1XnUcG7MvcAztqhqqCIs-/view?usp=drive_link)
-* [gff3](https://drive.google.com/file/d/1GX4LZlIkXiRQqOZD6Tq30eErSZ3Dgd6n/view?usp=drive_link)
-
-You will need a UNIX environment (like a Linux/Mac computer or Windows Subsystem for Linux) to work through the material.
+Coming soon!
 
 ### Schedule
 
-**Foundational Spatial 'Omics Analysis AWS/UNIX pre-session 2026**: Wednesday, September 23, 2026
+**High-Throughput Genomics DRAC Pre-Session 2026**: Wednesday, October 28, 2026
 
-| (ET) |                      Module                     |
+| (PDT) |                      Module                     |
 |:-----:|:-----------------------------------------------:|
-| 10:00 |               Welcome Introduction              |
-| 10:10 |            Module 1: Logging into DRAC           |
-| 11:10 |                   Short Break                   |
-| 11:15 | Module 2: Introduction to the Command Line |
-| 11:35 |           Module 3: File Manipulation           |
-| 12:05 |                    Long Break                   |
-| 13:05 |  Module 4: Searching and Sorting Through Files  |
-| 14:00 |                   Short Break                   |
-| 14:05 |             Module 5: Shell scripts             |
-| 15:00 |                     Finished                    |
+| 11:00 |               Welcome Introduction              |
+| 11:10 |            Module 1: Logging into DRAC           |
+| 12:10 |                   Short Break                   |
+| 12:15 | Module 2: Introduction to the Command Line |
+| 12:35 |           Module 3: File Manipulation           |
+| 13:05 |                    Long Break                   |
+| 14:05 |  Module 4: Searching and Sorting Through Files  |
+| 15:00 |                   Short Break                   |
+| 15:05 |             Module 5: Shell scripts             |
+| 16:00 |                     Finished                    |
 
 

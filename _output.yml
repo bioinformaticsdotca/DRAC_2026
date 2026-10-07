@@ -28,7 +28,7 @@ bookdown::gitbook:
 
 
     # YOU MUST REPLACE THE LINK BELOW - This is a link to your index.Rmd on your GitHub repo, which allows people to make suggestions
-    edit: https://github.com/bioinformaticsdotca/AWS_2025/blob/main/%s # Go to your index.Rmd page on GitHub, copy and paste the link to it, and add
+    edit: https://github.com/bioinformaticsdotca/DRAC_2026/blob/main/%s # Go to your index.Rmd page on GitHub, copy and paste the link to it, and add
     # Steps:
     # 1. Go to your index.Rmd page on GitHub, Copy and paste the link to it.
     # 2. Copy and paste the link to it, excluding the "index.Rmd" ending.
