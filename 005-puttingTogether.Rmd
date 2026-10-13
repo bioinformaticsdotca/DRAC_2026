@@ -1,323 +1,103 @@
-<!--JIARUI TO EDIT FULLY
+# Bioinformatics mini-challenge
 
-# 5. Putting it all together
+## Goal
 
+Combine shell operations, a small sequence dataset, a reproducible script and a Slurm batch job. All data are generated inside your workspace; no external downloads are required.
 
-### Writing your first script 
-
-We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them in files so that we can re-run all those operations again later by typing a single command. For historical reasons, a bunch of commands saved in a file is usually called a shell script, but make no mistake: these are actually small programs.
-
-Not only will writing shell scripts make your work faster– you won’t have to retype the same commands over and over again– it will also make it more accurate (fewer chances for typos) and more reproducible. If you come back to your work later (or if someone else finds your work and wants to build on it) you will be able to reproduce the same results simply by running your script, rather than having to remember or retype a long list of commands.
-
-Let’s start by going back to `data/genomes` and creating a new file, `count_tags.sh` which will become our shell script:
+## Step 1: Create a sample FASTA file
 
 ```bash
-$ cd data/genomes
-$ nano count_tags.sh
+mkdir -p ~/cbw-primer/challenge
+cd ~/cbw-primer/challenge
+cat > sequences.fa <<'EOF'
+>seqA
+ACGTACGT
+>seqB
+GGGTTT
+>seqC
+ATATATATAT
+EOF
 ```
 
-The command nano `count_tags.sh` opens the file `count_tags.sh` within the text editor ‘nano’ (which runs within the shell). If the file does not exist, it will be created. We can use the text editor to directly edit the file – we’ll simply insert the following line:
+FASTA records begin with `>` followed by an identifier and one or more sequence lines.
+
+## Step 2: Explore the data
 
 ```bash
-echo -n "atlanta.gbff: "
-grep "/locus_tag=" atlanta.gbff | wc -l
+head sequences.fa
+grep -c '^>' sequences.fa
+wc -l sequences.fa
 ```
 
-Then we save the file (Ctrl-O in nano), and exit the text editor (Ctrl-X in nano). Check that the directory molecules now contains a file called `count_tags.sh`.
+**Question:** How many sequences are present? Why is `wc -l` not always a reliable sequence counter for FASTA?
 
-Once we have saved the file, we can ask the shell to execute the commands it contains. Our shell is called bash, so we run the following command:
+<details><summary>Answer</summary>
 
-```bash
-$ bash count_tags.sh
-```
+There are **3 sequences**. FASTA sequences can occupy multiple lines, so counting total lines does not count records reliably. Counting header lines beginning with `>` is appropriate for well-formed FASTA.
 
-```
-atlanta.gbff 12237
-```
+</details>
 
+## Step 3: Build a simple analysis script
 
-Sure enough, our script’s output is exactly what we would get if we ran that pipeline directly.
-
-I've noticed that each locus tag appears twice in the gbff file, so we're double-counting a lot of tags. Let's modify our script to only count unique tags:
-
-```bash
-$ nano count_tags.sh
-```
-
-```bash
-echo -n "atlanta.gbff: "
-grep "/locus_tag=" atlanta.gbff | sort | uniq | wc -l
-```
-
-Now when we run the script:
-
-```bash
-$ bash count_tags.sh
-```
-
-```
-atlanta.gbff 6109
-```
-
-
-
-What if we want to count the number of locus tags in many files? Let's introduce a new concept: loopingOpen up our script again
-
-```bash
-$ nano count_tags.sh
-```
-
-```bash
-for filename in atlanta.gbff london.gbff
-do
-  echo -n "$filename "
-  grep "/locus_tag=" $filename | sort | uniq | wc -l
-done
-```
-
-We feed the loop with two elements: the text "atlanta.gbff" and then with the text "london.gbff".
-The loop executes all of the commands between `do` and `done` for each time the loop iterates, and each time, the variable "$filename" is replaced by either "atlanta.gbff" or "london.gbff"
-
-
-What if we wanted to count the number of tags in other gbff file. At the moment, the filenames are hard-coded into our script. It only counts tags in atlanta.gbff and london.gbff. We can make the script a little bit more flexible by using the variable nams "$1" and "$2"
-
-```bash
-$ nano count_tags.sh
-```
-
-Now, within “nano”, replace the text "atlanta.gbff" with the special variable called $1:
-
-```bash
-for filename in $1 $2
-do
-  echo -n "$filename "
-  grep "/locus_tag=" $filename | sort | uniq | wc -l
-done
-```
-
-Inside a shell script, `$1` means ‘the first filename (or other argument) on the command line’. Similarly, `$2` is the second argument passed to the script. We can now run our script like this:
-
-```bash
-$ bash count_tags.sh atlanta.gbff london.gbff
-```
-
-```
-atlanta.gbff 6109
-london.gbff 5831
-```
-
-
-
-or on a different file like this:
-
-```bash
-$ bash count_tags.sh nevada.gbff texas.gbff
-```
-
-```
-nevada.gbff 5691
-texas.gbff 5424
-```
-
-
-
-In case the filename happens to contain any spaces, we surround $1 with double-quotes.
-
-This is better, but our script still isn't quite as flexible as I'd like. It can only operate on two files at a time. What if I wanted to count the tags in three or four files at a time?
-
-There is a special variable "$@" which holds all of the arguments passed to the script. Let's make another modification to our script:
-
-
-```bash
-$ nano count_tags.sh
-```
-
-```bash
-for filename in $@
-do
-  echo -n "$filename "
-  grep "/locus_tag=" $filename | sort | uniq | wc -l
-done
-```
-
-The "$@" variable gets replaced with all of the arguments passed to our script. This allows us to run:
-
-```bash
-$ bash count_tags.sh *.gbff
-```
-
-```
-atlanta.gbff 6109
-braunschweig.gbff 5248
-lab-strain.gbff 4609
-london.gbff 5831
-muenster.gbff 5176
-nevada.gbff 5691
-texas.gbff 5424
-```
-
-
-
-This works, but it may take the next person who reads `count_tags.sh` a moment to figure out what it does. We can improve our script by adding some comments at the top:
-
-```bash
-$ nano count_tags.sh
-```
-
-```bash
-# Counts the number of unique locus tags in one or more gbff files.
-
-for filename in $@
-do
-  echo -n "$filename "
-  grep "/locus_tag=" $filename | sort | uniq | wc -l
-done
-```
-
-A comment starts with a `#` character and runs to the end of the line. The computer ignores comments, but they’re invaluable for helping people (including your future self) understand and use scripts. The only caveat is that each time you modify the script, you should check that the comment is still accurate: an explanation that sends the reader in the wrong direction is worse than none at all.
-
-Lastly, let's make our script executable. First we'll modify the file permissions. This can be done using the `chmod` command:
-
-```bash
-chmod +x count_tags.sh
-```
-
-We'll also add a "shebang" line to our script which tells the shell what program should be used to run our script. Modify our script to include this first line:
+Save the following as `analyze.sh`:
 
 ```bash
 #!/bin/bash
-# Counts the number of unique locus tags in one or more gbff files.
-
-for filename in $@
-do
-  echo -n "$filename "
-  grep "/locus_tag=" $filename | sort | uniq | wc -l
-done
+set -euo pipefail
+input="${1:?Usage: bash analyze.sh INPUT.fa}"
+printf 'Input: %s\n' "$input"
+printf 'Sequences: '
+grep -c '^>' "$input"
+printf 'Total bases: '
+awk '!/^>/ {gsub(/[[:space:]]/, ""); n += length($0)} END {print n+0}' "$input"
 ```
 
-Exercise: Can you create a command that uses our count_tags.sh script to find the gbff file with the smallest number of locus tags?
-
-## Awk
-
-Another very helpful "Swiss Army knife" of the shell is the program `awk`. Awk that, like `grep`, allows you to search for lines in a file matching some condition, but `awk` /also/ allows you to perform some small operations on those lines once you have matched them.
-
-Let's build an simple example piece by piece.
-
-Open up a new file:
+Run it:
 
 ```bash
-nano find_lengths.awk
+bash analyze.sh sequences.fa
 ```
 
-In this awk script, let's just write:
+Expected results: **3 sequences** and **24 bases**. The base count sums sequence-line lengths and supports wrapped FASTA records.
 
-```awk
-/LOCUS/
-```
+## Step 4: Submit the analysis to Slurm
 
-This is instructing awk to find all files that match the string "LOCUS". We can find all the lines matching "LOCUS" in the atlanta.gbff file by running:
+Save as `analyze.sbatch`:
 
 ```bash
-awk -f find_lengths.awk atlanta.gbff
+#!/bin/bash
+#SBATCH --job-name=fasta-count
+#SBATCH --time=00:05:00
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G
+#SBATCH --output=fasta-count-%j.out
+
+set -euo pipefail
+cd "$SLURM_SUBMIT_DIR"
+bash analyze.sh sequences.fa
 ```
 
-```
-LOCUS       NZ_CP027572          5858866 bp    DNA     circular CON 24-MAY-2021
-LOCUS       NZ_CP027571            97037 bp    DNA     circular CON 24-MAY-2021
-```
-
-
-
-Notice that the third column in the "LOCUS" lines includes the length of the sequence. Let's pull that out. Modify the contents of `find_lengths.awk` to include a block (executed each time awk finds a matching line)
-
-
-In an awk script, we can use $3 to refer to the text in the third column (space-separated). Note that this is different to the dollar-sign variables in bash. Here we are writing in a script in the awk language, and not the bash language.
-
-```awk
-/LOCUS/ {
-    print "Found a locus with length " $3 " bp"
-}
-```
-
-Running the script now gives:
+Run:
 
 ```bash
-awk -f find_lengths.awk atlanta.gbff
+sbatch analyze.sbatch
+squeue -u "$USER"
 ```
 
-```
-Found a locus with length 5858866 bp
-Found a locus with length 97037 bp
-```
+Once it finishes, inspect the `fasta-count-JOBID.out` file (replace `JOBID` with the actual number). If your training allocation requires `--account` or `--partition`, use the instructor-provided values.
 
+## Step 5: Save and transfer results
 
-It might be helpful to sum up those lengths. We can create a variable called 'total' and add the numbers found in the third column. Open up the awk script and modify the contents to read
-
-```awk
-/LOCUS/ {
-    print "Found a locus with length " $3 " bp"
-    sum += $3
-}
-
-END {
-    print "Total: " sum " bp"
-}
-```
-
-We've written a new block here. Our first block uses the `/LOCUS/` matcher so it is run every time awk finds a line that matches "LOCUS". The `END` block is a special block that is run only once - when awk reaches the end of the input file. There is a similar optional `BEGIN` block run once at the beginning, but we have no use for that in our example.
-
-Running the script now gives:
+From your laptop, retrieve the output with `rsync` (substitute the job ID and workshop username):
 
 ```bash
-awk -f find_lengths.awk atlanta.gbff
+rsync -avh YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/challenge/fasta-count-JOBID.out ./
 ```
 
-```
-Found a locus with length 5858866 bp
-Found a locus with length 97037 bp
-Total: 5955903 bp
-```
+## Stretch challenge
 
+Modify `analyze.sh` to accept multiple FASTA files, using a `for filename in "$@"` loop. Consider how you would process hundreds of files using a Slurm job array rather than running one long serial task.
 
-I think that this script is a little bit too long and verbose. Let's clean it up a little to read simply:
+## Wrap-up
 
-
-```awk
-/LOCUS/ {sum += $3}
-END {print sum}
-```
-
-This gives us just the total length for a file:
-
-```bash
-awk -f find_lengths.awk atlanta.gbff
-```
-
-```
-5955903
-```
-
-
-
-It is actually not even necessary to write our awk command in a separte file. Our script is short enough that we might even just want to write it in-line inside a command:
-
-```bash
-awk '/LOCUS/{sum += $3} END{print sum}' atlanta.gbff
-```
-
-```
-5955903
-```
-
-
-Exercise: Can you write a command or a bash script to find the genome with the smallest total size?
-
-
-## Key Points
-
-1. Save commands in files (usually called shell scripts) for re-use.
-2. `bash [filename]` runs the commands saved in a file.
-3. `$@` refers to all of a shell script’s command-line arguments.
-4. `$1`, `$2`, etc., refer to the first command-line argument, the second command-line argument, etc.
-5. Place variables in quotes if the values might have spaces in them.
-6. Letting users decide what files to process is more flexible and more consistent with built-in Unix commands.
+You have registered and logged in to an HPC training cluster, organized data, used environment modules, submitted and inspected a job, and run a reproducible bioinformatics script. For production work, benchmark resource usage and use the official cluster documentation and policies.
