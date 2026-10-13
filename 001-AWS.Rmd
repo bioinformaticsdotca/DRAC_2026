@@ -1,72 +1,68 @@
-<!--JIARUI TO EDIT FULLY
+# HPC infrastructure, registration and login
 
-# 1. Logging into AWS
+## Learning goals
 
-<iframe src="https://docs.google.com/presentation/d/1fZeCDynJ5iGOZJPlzapa5HI2G5DpxGeQ/preview" width="640" height="480" allow="autoplay"></iframe>  
+By the end of this module, you should be able to describe a training cluster, register for the workshop, and connect through SSH.
 
-### Logging into the Amazon Cloud During the Workshop  
+## What is HPC?
 
-* These instructions will **ONLY** be relevant in class, as the Cloud will not be accessible from home in advance of the class.
- 
-* On the cloud, we're going to use the default username: **ubuntu**
- 
+A high-performance computing (HPC) cluster combines many networked computers. A **login node** is the entry point for editing files and submitting work; **compute nodes** execute jobs. A **scheduler** (Slurm in this workshop) assigns compute resources according to job requirements and policy. Shared storage lets compute nodes access project data.
 
-### Logging in with ssh (Mac/Linux)
+| Component | Purpose |
+|:--|:--|
+| Login node | SSH access, lightweight editing, compilation, job submission |
+| Compute node | CPU and memory resources for running analyses |
+| Slurm | Queues, allocates and monitors jobs |
+| Shared storage | Stores data accessible to jobs |
 
-* Make sure the permissions on your private key are secure. Use chmod on your downloaded pem file:
+**Important:** Do not run computationally intensive analyses on login nodes. Submit batch jobs or request interactive allocations.
+
+## Register for the workshop
+
+1. Open the **registration link provided by the instructors** (the address is not included here because it has not yet been confirmed).
+2. Register the required **username, password and email**.
+3. Keep your credentials private. Use the workshop account, which may be distinct from a regular DRAC account.
+
+## Connect by SSH
+
+Open Terminal (macOS/Linux) or Windows Terminal / PowerShell with OpenSSH:
 
 ```bash
- chmod 600 CBW.pem
+ssh YOUR_USERNAME@cbw.c3.ca
 ```
 
-* To log in to the instance, use the -i command line argument to specify your private key:
+Replace `YOUR_USERNAME` with the username you registered. Confirm the host key only after verifying the hostname with the instructors, then enter your password when prompted. The password is not shown as you type.
+
+Verify where you are:
 
 ```bash
- ssh -i CBW.pem ubuntu@##.uhn-hpc.ca
+whoami
+hostname
+pwd
 ```
 
-(where ## is your assigned student number.)
+Log out:
 
-### Logging in with OpenSSH client (Windows)
-
--   Make sure OpenSSH client is installed on your machine. Settings > System > Optional features, then search for "OpenSSH" in your added features.
-
--   open the "Command Prompt" or "Windows PowerShell" and run
-
-``` bash
- C:\Windows\System32\OpenSSH\ssh.exe -i CBW.pem ubuntu@##.uhn-hpc.ca
+```bash
+exit
 ```
 
-## File System Layout
+## Exercise: first login
 
-When you log in, you'll notice that you have two directories: **CourseData** and **workspace**.
+1. Connect to `cbw.c3.ca`.
+2. Run `whoami`, `hostname`, and `pwd`.
+3. Identify which machine you are on and why intensive computation belongs on compute nodes.
 
-* The **CourseData** directory will contain the files that you'll need to complete your lab assignments.
+<details><summary>Check your understanding</summary>
 
-* The **workspace** directory is where you will work on your labs. Files here will be accessible through your browser.
+`whoami` prints your login name; `hostname` prints the machine name; `pwd` prints your current directory. Exact values depend on your account and the current training infrastructure.
 
-## Workspace
+</details>
 
-* Everything created in your workspace on the cloud is also available by a web server on your cloud instance.  Simply go to the following in your browser:
+## Common connection issues
 
-```
- http://##.uhn-hpc.ca/
-```
-(where ## is your assigned student number.)
+- **Permission denied:** Confirm the username and workshop password; do not share credentials.
+- **Could not resolve hostname:** Check that `cbw.c3.ca` was entered correctly and that your network can resolve it.
+- **Connection timed out:** Check connectivity or ask the instructor whether network access is restricted.
 
-## RStudio 
-* RStudio server is installed on your instance. It is accessible in your browser
-```
- http://##.uhn-hpc.ca:8080
-```
-(where ## is your assigned student number.) The username is ***ubuntu***. We will give you the password in class.
-
-## Jupyter Notebook
-
--   Jupyter Notebook is installed on your instance. It is accessible in your browser
-
-```         
- http://##.uhn-hpc.ca:8000
-```
-
-(where \## is your assigned student number.) We will give you the password in class.
+**Next:** Learn to navigate and transfer files.
