@@ -1,46 +1,76 @@
-<!--JIARUI TO EDIT FULLY
+# Working with directories and files
 
-# 2. Introduction to the command line
+## Learning goals
 
-<iframe src="https://docs.google.com/presentation/d/10sWVaTLiOqrB5C_oMT0yHX_C5j6WTarM/preview" width="640" height="480" allow="autoplay"></iframe>  
+Navigate Linux directories, inspect text files, organize results, and transfer files between your computer and the training cluster.
 
-### Exercise: Exploring the filesystem
-
-1. Connect to your AWS instance
-
-
-2. Type the `ls` command - what is the output?
-
-<details>
-  <summary>
-Solution
-  </summary>
+## Explore the shell
 
 ```bash
-$ ls
-CourseData  R  workspace
+pwd                  # Where am I?
+ls                   # What is here?
+ls -lah              # Include hidden files and sizes
+cd ~                 # Return to home directory
+mkdir -p cbw-primer   # Create a workspace
+cd cbw-primer
 ```
 
+Paths beginning with `/` are **absolute**; paths relative to your working directory are **relative**. `..` refers to the parent directory and `~` refers to your home directory.
 
-The `ls` command lists the contents of a working directory.
-
-</details>  <br>
-
-
-3. Type the `pwd` command - what is the output?
-
-<details>
-  <summary>
-Solution
-  </summary>
-
+## Create and inspect files
 
 ```bash
-$ pwd
-/home/ubuntu
+printf 'sample\treads\nA\t12\nB\t8\n' > counts.tsv
+cat counts.tsv
+head -n 2 counts.tsv
+wc -l counts.tsv
+cp counts.tsv counts-copy.tsv
+mv counts-copy.tsv counts-backup.tsv
 ```
 
-The `pwd` command shows the absolute *path to the working directory*.
+`>` creates or overwrites a file. Use it carefully. Use `>>` to append.
+
+```bash
+printf 'C\t15\n' >> counts.tsv
+less counts.tsv
+```
+
+Press `q` to exit `less`. For editing, you can use `nano counts.tsv` (Ctrl+O to save, Ctrl+X to exit).
+
+## File transfer from your own computer
+
+Run the following commands in **a separate terminal on your laptop**, not inside the cluster SSH session:
+
+```bash
+# Upload one local file to your cluster home directory
+rsync -avh ./example.txt YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/
+
+# Download a result from the cluster
+rsync -avh YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/counts.tsv ./
+```
+
+Change `YOUR_USERNAME` and local paths as needed. `rsync` works over SSH and can resume incremental transfers. FileZilla is a graphical alternative: select **SFTP**, host `cbw.c3.ca`, port `22`, and use your assigned workshop credentials.
+
+## Exercise
+
+1. Create `~/cbw-primer/results`.
+2. Create a text file with three sample names, then inspect it with `cat` and `wc -l`.
+3. Upload a small text file from your laptop using `rsync` or FileZilla.
+4. Download the file back to your laptop.
+
+<details><summary>Example commands</summary>
+
+```bash
+mkdir -p ~/cbw-primer/results
+printf 'sample1\nsample2\nsample3\n' > ~/cbw-primer/samples.txt
+cat ~/cbw-primer/samples.txt
+wc -l ~/cbw-primer/samples.txt
+```
 
 </details>
 
+## Shared filesystem etiquette
+
+Use descriptive filenames. Avoid generating millions of tiny files or copying large datasets unnecessarily. Ask instructors which directories are appropriate for persistent data and temporary job output; filesystem paths and quotas are cluster-specific.
+
+**Next:** Software modules and reproducible environments.
