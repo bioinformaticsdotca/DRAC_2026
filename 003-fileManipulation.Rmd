@@ -1,104 +1,60 @@
-<!--JIARUI TO EDIT FULLY
+# Software environments and reproducibility
 
-# 3. File manipulation
+## Learning goals
 
-<iframe src="https://docs.google.com/presentation/d/15UXlpb-I3KPOB7_JniJu3gT2uypKmCAD/preview" width="640" height="480" allow="autoplay"></iframe>  
+Find available software, load an environment module, and identify the commands and versions used in an analysis.
 
-### Exercise: Reading text files
+## Environment modules
 
-Using the commands you just learned, explore the .gff3 file in the Home directory. 
-
-1. Is the file a text file?
-
-<details>
-  <summary>
-Solution
-  </summary>
-
-Yes. You can use `less`, `cat`, `head`, or `tail` and get human-readable info. Note that this doesn't have anything to do with its file extension.
-</details> <br>
-
-
-2. How many lines does the file have?
-
-<details>
-  <summary>
-Solution
-  </summary>
-
+Clusters provide software through **environment modules**. Available applications and versions depend on the training system.
 
 ```bash
-$ wc -l GCF_009858895.2_ASM985889v3_genomic.gff 
-67 GCF_009858895.2_ASM985889v3_genomic.gff
+module avail
+module list
+module spider python       # Available on systems using Lmod
+module load python         # If an appropriate Python module is available
+python --version
+module list
 ```
 
-There are 67 lines in this file.
+`module load` modifies your environment (for example `PATH`) for the current shell. When finished, you can use `module unload <module-name>` or `module purge`; `module purge` may also remove modules needed by other tools, so use it with care.
 
-</details> <br>
+If a command is unavailable, ask the instructors which software stack is installed rather than installing system-wide software.
 
-  
+## Python virtual environments
 
-3. Can you read the content of the file using less?
-
-<details>
-  <summary>
-Solution
-  </summary>
+If Python and the `venv` module are available:
 
 ```bash
-$ less GCF_009858895.2_ASM985889v3_genomic.gff 
+python -m venv ~/cbw-primer/venv
+source ~/cbw-primer/venv/bin/activate
+python --version
+which python
+python -m pip list
+ deactivate
 ```
 
-</details>
+For workshop exercises, use instructor-supplied package versions. Heavy installs or builds should follow cluster policy and generally run off the login node.
 
----
-
-### Exercise: Editing text files
-
-Using the commands you just learned, create a file called helloworld.txt and edit it using nano. 
-
-1. Write “Hello world” into the file. Save the file and exit nano. 
-2. Create a subdirectory called “test”; move the helloworld.txt file into test.
-3. Create a copy of the helloworld.txt file called helloworld2.txt 
-
-<details>
-  <summary>
-Solution
-  </summary>
-
-1. First, use the `nano` command to open a file called `helloworld.txt`
+## Inspect versions and paths
 
 ```bash
-$ nano helloworld.txt
+command -v python
+python --version
+module list 2>&1
 ```
 
-Inside the nano editor, write "Hello world", then use the `^O` option to write the changes and `^X` to exit.
+Record versions, parameters, input filenames, and job scripts so the work can be reproduced. Different modules or virtual environments may produce different results.
 
-2. Create a subdirectory called “test”; move the helloworld.txt file into test.
+## Containers and workflows
 
-Use the command `mkdir` to create this new directory. Then, use `mv` to move `helloworld.txt` into this directory.
+Tools such as Apptainer and workflow managers such as Nextflow or Snakemake can help package complex analyses, but only use them if supported by the workshop environment. Do not assume Docker can run on shared HPC nodes.
 
+## Exercise
 
-```bash
-$ mkdir test
-$ mv helloworld.txt test/
-```
+1. Display available modules and the currently loaded set.
+2. Load an instructor-approved software module and check its version.
+3. Identify the executable used by `command -v`.
+4. Explain why recording versions matters when reproducing an analysis.
 
-3. Create a copy of the `helloworld.txt` file called `helloworld2.txt`. 
-
-Change the working directory using `cd`, then use the `cp` command to create the copy.
-
-```bash
-$ cd test
-$ cp helloworld.txt helloworld2.txt
-
-```
-
-</details>
-
-
-### Reference material
-Here are two cheat-sheets that can be useful to have as a reference for common UNIX/Linux commands:
-
-- [FOSSwire.com Unix/Linux Command Reference](https://files.fosswire.com/2007/08/fwunixref.pdf)
-- [SUSO.org Unix/Linux Command Syntax and Reference](https://i.redd.it/6s2q64ticje51.png)
+**Next:** Submit compute jobs using Slurm.
