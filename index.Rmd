@@ -13,6 +13,8 @@ github-repo: cbw-dev/DRAC_2026 # CHANGE THIS TO YOUR OWN REPO
 favicon: img/favicon.ico
 ---
 
+# DRAC Primer Session 2026 {- .unnumbered .unlisted}
+
 Welcome to the **Canadian Bioinformatics Workshops (CBW) DRAC Primer Session**. This hands-on course introduces a shared high-performance computing (HPC) training cluster and the commands needed to run reproducible bioinformatics analyses.
 
 You will learn how to register and connect, manage files, transfer data, use software, submit and monitor Slurm jobs, and access interactive computing resources. The workshop finishes with a short bioinformatics challenge.
