@@ -1,5 +1,5 @@
 --- 
-title: "CBW DRAC Onaboarding"
+title: "DRAC Primer Session 2026"
 faculty: Material by Jiarui Li
 site: bookdown::bookdown_site
 documentclass: book
@@ -13,7 +13,7 @@ github-repo: cbw-dev/DRAC_2026 # CHANGE THIS TO YOUR OWN REPO
 favicon: img/favicon.ico
 ---
 
-# DRAC Primer Session 2026 {-}
+# Introduction {-}
 
 Welcome to the **Canadian Bioinformatics Workshops (CBW) DRAC Primer Session**. This hands-on course introduces a shared high-performance computing (HPC) training cluster and the commands needed to run reproducible bioinformatics analyses.
 
