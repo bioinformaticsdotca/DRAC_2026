@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bioinformatics mini-challenge | DRAC Primer Session 2026</title>
+  <meta name="description" content="Website for the Canadian Bioinformatics Workshops’ DRAC Primer Session" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bioinformatics mini-challenge | DRAC Primer Session 2026" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://bioinformaticsdotca.github.io/DRAC_2026/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Website for the Canadian Bioinformatics Workshops’ DRAC Primer Session" />
+  <meta name="github-repo" content="cbw-dev/DRAC_2026" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bioinformatics mini-challenge | DRAC Primer Session 2026" />
+  
+  <meta name="twitter:description" content="Website for the Canadian Bioinformatics Workshops’ DRAC Primer Session" />
+  <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/DRAC_2026/img/bioinformatics_logo.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="submit-and-monitor-jobs-with-slurm.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+ <li><center><strong><a href="./"><br>AWS/UNIX primer 2025<br><br></a></strong></center></li>
+ <a href="./">
+ <img src="img/Cloud_icon.jpg" width="70%" alt="AWS/Unix primer logo." style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+ <br>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>DRAC Primer Session 2026</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#workshop-details"><i class="fa fa-check"></i>Workshop details</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-the-session"><i class="fa fa-check"></i>Before the session</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-outline"><i class="fa fa-check"></i>Course outline</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i>Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a>
+<ul>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#facilitator"><i class="fa fa-check"></i>Facilitator</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hpc-infrastructure-registration-and-login.html"><a href="hpc-infrastructure-registration-and-login.html"><i class="fa fa-check"></i>HPC infrastructure, registration and login</a>
+<ul>
+<li class="chapter" data-level="" data-path="hpc-infrastructure-registration-and-login.html"><a href="hpc-infrastructure-registration-and-login.html#learning-goals"><i class="fa fa-check"></i>Learning goals</a></li>
+<li class="chapter" data-level="" data-path="hpc-infrastructure-registration-and-login.html"><a href="hpc-infrastructure-registration-and-login.html#what-is-hpc"><i class="fa fa-check"></i>What is HPC?</a></li>
+<li class="chapter" data-level="" data-path="hpc-infrastructure-registration-and-login.html"><a href="hpc-infrastructure-registration-and-login.html#register-for-the-workshop"><i class="fa fa-check"></i>Register for the workshop</a></li>
+<li class="chapter" data-level="" data-path="hpc-infrastructure-registration-and-login.html"><a href="hpc-infrastructure-registration-and-login.html#connect-by-ssh"><i class="fa fa-check"></i>Connect by SSH</a></li>
+<li class="chapter" data-level="" data-path="hpc-infrastructure-registration-and-login.html"><a href="hpc-infrastructure-registration-and-login.html#exercise-first-login"><i class="fa fa-check"></i>Exercise: first login</a></li>
+<li class="chapter" data-level="" data-path="hpc-infrastructure-registration-and-login.html"><a href="hpc-infrastructure-registration-and-login.html#common-connection-issues"><i class="fa fa-check"></i>Common connection issues</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="working-with-directories-and-files.html"><a href="working-with-directories-and-files.html"><i class="fa fa-check"></i>Working with directories and files</a>
+<ul>
+<li class="chapter" data-level="" data-path="working-with-directories-and-files.html"><a href="working-with-directories-and-files.html#learning-goals-1"><i class="fa fa-check"></i>Learning goals</a></li>
+<li class="chapter" data-level="" data-path="working-with-directories-and-files.html"><a href="working-with-directories-and-files.html#explore-the-shell"><i class="fa fa-check"></i>Explore the shell</a></li>
+<li class="chapter" data-level="" data-path="working-with-directories-and-files.html"><a href="working-with-directories-and-files.html#create-and-inspect-files"><i class="fa fa-check"></i>Create and inspect files</a></li>
+<li class="chapter" data-level="" data-path="working-with-directories-and-files.html"><a href="working-with-directories-and-files.html#file-transfer-from-your-own-computer"><i class="fa fa-check"></i>File transfer from your own computer</a></li>
+<li class="chapter" data-level="" data-path="working-with-directories-and-files.html"><a href="working-with-directories-and-files.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="working-with-directories-and-files.html"><a href="working-with-directories-and-files.html#shared-filesystem-etiquette"><i class="fa fa-check"></i>Shared filesystem etiquette</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="software-environments-and-reproducibility.html"><a href="software-environments-and-reproducibility.html"><i class="fa fa-check"></i>Software environments and reproducibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="software-environments-and-reproducibility.html"><a href="software-environments-and-reproducibility.html#learning-goals-2"><i class="fa fa-check"></i>Learning goals</a></li>
+<li class="chapter" data-level="" data-path="software-environments-and-reproducibility.html"><a href="software-environments-and-reproducibility.html#environment-modules"><i class="fa fa-check"></i>Environment modules</a></li>
+<li class="chapter" data-level="" data-path="software-environments-and-reproducibility.html"><a href="software-environments-and-reproducibility.html#python-virtual-environments"><i class="fa fa-check"></i>Python virtual environments</a></li>
+<li class="chapter" data-level="" data-path="software-environments-and-reproducibility.html"><a href="software-environments-and-reproducibility.html#inspect-versions-and-paths"><i class="fa fa-check"></i>Inspect versions and paths</a></li>
+<li class="chapter" data-level="" data-path="software-environments-and-reproducibility.html"><a href="software-environments-and-reproducibility.html#containers-and-workflows"><i class="fa fa-check"></i>Containers and workflows</a></li>
+<li class="chapter" data-level="" data-path="software-environments-and-reproducibility.html"><a href="software-environments-and-reproducibility.html#exercise-1"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html"><i class="fa fa-check"></i>Submit and monitor jobs with Slurm</a>
+<ul>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html#why-use-a-scheduler"><i class="fa fa-check"></i>Why use a scheduler?</a></li>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html#write-a-batch-script"><i class="fa fa-check"></i>Write a batch script</a></li>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html#understand-resource-requests"><i class="fa fa-check"></i>Understand resource requests</a></li>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html#monitor-and-diagnose-jobs"><i class="fa fa-check"></i>Monitor and diagnose jobs</a></li>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html#interactive-allocations"><i class="fa fa-check"></i>Interactive allocations</a></li>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html#jupyterhub"><i class="fa fa-check"></i>JupyterHub</a></li>
+<li class="chapter" data-level="" data-path="submit-and-monitor-jobs-with-slurm.html"><a href="submit-and-monitor-jobs-with-slurm.html#exercise-2"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html"><i class="fa fa-check"></i>Bioinformatics mini-challenge</a>
+<ul>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#goal"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#step-1-create-a-sample-fasta-file"><i class="fa fa-check"></i>Step 1: Create a sample FASTA file</a></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#step-2-explore-the-data"><i class="fa fa-check"></i>Step 2: Explore the data</a></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#step-3-build-a-simple-analysis-script"><i class="fa fa-check"></i>Step 3: Build a simple analysis script</a></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#step-4-submit-the-analysis-to-slurm"><i class="fa fa-check"></i>Step 4: Submit the analysis to Slurm</a></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#step-5-save-and-transfer-results"><i class="fa fa-check"></i>Step 5: Save and transfer results</a></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#stretch-challenge"><i class="fa fa-check"></i>Stretch challenge</a></li>
+<li class="chapter" data-level="" data-path="bioinformatics-mini-challenge.html"><a href="bioinformatics-mini-challenge.html#wrap-up"><i class="fa fa-check"></i>Wrap-up</a></li>
+</ul></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/cihr.png" width=90% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="70" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="70" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=25% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+<a href="https://www.hpcforhealth.ca/"><img src="img/sponsors/hpc4health.png" width=60% style="display:inline-block;" style="padding-bottom: 20px "alt="HPC4Health logo.">
+<a href="https://oicr.on.ca/"><img src="img/sponsors/BHCRI_logo-transparent.png" width=90% style="display:inline-block;" style="padding-bottom: 20px" alt="Beatrice Hunter Cancer Research Institute logo.">
+<a href="https://oicr.on.ca/"><img src="img/sponsors/dal-logo-horizontal-colour.png" width=90% style="display:inline-block;" style="padding-bottom: 20px" alt="Dalhousie University logo.">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DRAC Primer Session 2026</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bioinformatics-mini-challenge" class="section level1 hasAnchor">
+<h1>Bioinformatics mini-challenge<a href="bioinformatics-mini-challenge.html#bioinformatics-mini-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="goal" class="section level2 hasAnchor">
+<h2>Goal<a href="bioinformatics-mini-challenge.html#goal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Combine shell operations, a small sequence dataset, a reproducible script and a Slurm batch job. All data are generated inside your workspace; no external downloads are required.</p>
+</div>
+<div id="step-1-create-a-sample-fasta-file" class="section level2 hasAnchor">
+<h2>Step 1: Create a sample FASTA file<a href="bioinformatics-mini-challenge.html#step-1-create-a-sample-fasta-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="bioinformatics-mini-challenge.html#cb16-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/cbw-primer/challenge</span>
+<span id="cb16-2"><a href="bioinformatics-mini-challenge.html#cb16-2" tabindex="-1"></a><span class="bu">cd</span> ~/cbw-primer/challenge</span>
+<span id="cb16-3"><a href="bioinformatics-mini-challenge.html#cb16-3" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> sequences.fa <span class="op">&lt;&lt;&#39;EOF&#39;</span></span>
+<span id="cb16-4"><a href="bioinformatics-mini-challenge.html#cb16-4" tabindex="-1"></a><span class="st">&gt;seqA</span></span>
+<span id="cb16-5"><a href="bioinformatics-mini-challenge.html#cb16-5" tabindex="-1"></a><span class="st">ACGTACGT</span></span>
+<span id="cb16-6"><a href="bioinformatics-mini-challenge.html#cb16-6" tabindex="-1"></a><span class="st">&gt;seqB</span></span>
+<span id="cb16-7"><a href="bioinformatics-mini-challenge.html#cb16-7" tabindex="-1"></a><span class="st">GGGTTT</span></span>
+<span id="cb16-8"><a href="bioinformatics-mini-challenge.html#cb16-8" tabindex="-1"></a><span class="st">&gt;seqC</span></span>
+<span id="cb16-9"><a href="bioinformatics-mini-challenge.html#cb16-9" tabindex="-1"></a><span class="st">ATATATATAT</span></span>
+<span id="cb16-10"><a href="bioinformatics-mini-challenge.html#cb16-10" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div>
+<p>FASTA records begin with <code>&gt;</code> followed by an identifier and one or more sequence lines.</p>
+</div>
+<div id="step-2-explore-the-data" class="section level2 hasAnchor">
+<h2>Step 2: Explore the data<a href="bioinformatics-mini-challenge.html#step-2-explore-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="bioinformatics-mini-challenge.html#cb17-1" tabindex="-1"></a><span class="fu">head</span> sequences.fa</span>
+<span id="cb17-2"><a href="bioinformatics-mini-challenge.html#cb17-2" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&#39;^&gt;&#39;</span> sequences.fa</span>
+<span id="cb17-3"><a href="bioinformatics-mini-challenge.html#cb17-3" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> sequences.fa</span></code></pre></div>
+<p><strong>Question:</strong> How many sequences are present? Why is <code>wc -l</code> not always a reliable sequence counter for FASTA?</p>
+<details>
+<summary>
+Answer
+</summary>
+<p>There are <strong>3 sequences</strong>. FASTA sequences can occupy multiple lines, so counting total lines does not count records reliably. Counting header lines beginning with <code>&gt;</code> is appropriate for well-formed FASTA.</p>
+</details>
+</div>
+<div id="step-3-build-a-simple-analysis-script" class="section level2 hasAnchor">
+<h2>Step 3: Build a simple analysis script<a href="bioinformatics-mini-challenge.html#step-3-build-a-simple-analysis-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Save the following as <code>analyze.sh</code>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="bioinformatics-mini-challenge.html#cb18-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb18-2"><a href="bioinformatics-mini-challenge.html#cb18-2" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb18-3"><a href="bioinformatics-mini-challenge.html#cb18-3" tabindex="-1"></a><span class="va">input</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${1</span><span class="op">:?</span>Usage: bash analyze.sh INPUT.fa<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb18-4"><a href="bioinformatics-mini-challenge.html#cb18-4" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&#39;Input: %s\n&#39;</span> <span class="st">&quot;</span><span class="va">$input</span><span class="st">&quot;</span></span>
+<span id="cb18-5"><a href="bioinformatics-mini-challenge.html#cb18-5" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&#39;Sequences: &#39;</span></span>
+<span id="cb18-6"><a href="bioinformatics-mini-challenge.html#cb18-6" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&#39;^&gt;&#39;</span> <span class="st">&quot;</span><span class="va">$input</span><span class="st">&quot;</span></span>
+<span id="cb18-7"><a href="bioinformatics-mini-challenge.html#cb18-7" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&#39;Total bases: &#39;</span></span>
+<span id="cb18-8"><a href="bioinformatics-mini-challenge.html#cb18-8" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;!/^&gt;/ {gsub(/[[:space:]]/, &quot;&quot;); n += length($0)} END {print n+0}&#39;</span> <span class="st">&quot;</span><span class="va">$input</span><span class="st">&quot;</span></span></code></pre></div>
+<p>Run it:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="bioinformatics-mini-challenge.html#cb19-1" tabindex="-1"></a><span class="fu">bash</span> analyze.sh sequences.fa</span></code></pre></div>
+<p>Expected results: <strong>3 sequences</strong> and <strong>24 bases</strong>. The base count sums sequence-line lengths and supports wrapped FASTA records.</p>
+</div>
+<div id="step-4-submit-the-analysis-to-slurm" class="section level2 hasAnchor">
+<h2>Step 4: Submit the analysis to Slurm<a href="bioinformatics-mini-challenge.html#step-4-submit-the-analysis-to-slurm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Save as <code>analyze.sbatch</code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="bioinformatics-mini-challenge.html#cb20-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb20-2"><a href="bioinformatics-mini-challenge.html#cb20-2" tabindex="-1"></a><span class="co">#SBATCH --job-name=fasta-count</span></span>
+<span id="cb20-3"><a href="bioinformatics-mini-challenge.html#cb20-3" tabindex="-1"></a><span class="co">#SBATCH --time=00:05:00</span></span>
+<span id="cb20-4"><a href="bioinformatics-mini-challenge.html#cb20-4" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb20-5"><a href="bioinformatics-mini-challenge.html#cb20-5" tabindex="-1"></a><span class="co">#SBATCH --mem=1G</span></span>
+<span id="cb20-6"><a href="bioinformatics-mini-challenge.html#cb20-6" tabindex="-1"></a><span class="co">#SBATCH --output=fasta-count-%j.out</span></span>
+<span id="cb20-7"><a href="bioinformatics-mini-challenge.html#cb20-7" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="bioinformatics-mini-challenge.html#cb20-8" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb20-9"><a href="bioinformatics-mini-challenge.html#cb20-9" tabindex="-1"></a><span class="bu">cd</span> <span class="st">&quot;</span><span class="va">$SLURM_SUBMIT_DIR</span><span class="st">&quot;</span></span>
+<span id="cb20-10"><a href="bioinformatics-mini-challenge.html#cb20-10" tabindex="-1"></a><span class="fu">bash</span> analyze.sh sequences.fa</span></code></pre></div>
+<p>Run:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="bioinformatics-mini-challenge.html#cb21-1" tabindex="-1"></a><span class="ex">sbatch</span> analyze.sbatch</span>
+<span id="cb21-2"><a href="bioinformatics-mini-challenge.html#cb21-2" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">&quot;</span><span class="va">$USER</span><span class="st">&quot;</span></span></code></pre></div>
+<p>Once it finishes, inspect the <code>fasta-count-JOBID.out</code> file (replace <code>JOBID</code> with the actual number). If your training allocation requires <code>--account</code> or <code>--partition</code>, use the instructor-provided values.</p>
+</div>
+<div id="step-5-save-and-transfer-results" class="section level2 hasAnchor">
+<h2>Step 5: Save and transfer results<a href="bioinformatics-mini-challenge.html#step-5-save-and-transfer-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>From your laptop, retrieve the output with <code>rsync</code> (substitute the job ID and workshop username):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="bioinformatics-mini-challenge.html#cb22-1" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avh</span> YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/challenge/fasta-count-JOBID.out ./</span></code></pre></div>
+</div>
+<div id="stretch-challenge" class="section level2 hasAnchor">
+<h2>Stretch challenge<a href="bioinformatics-mini-challenge.html#stretch-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Modify <code>analyze.sh</code> to accept multiple FASTA files, using a <code>for filename in "$@"</code> loop. Consider how you would process hundreds of files using a Slurm job array rather than running one long serial task.</p>
+</div>
+<div id="wrap-up" class="section level2 hasAnchor">
+<h2>Wrap-up<a href="bioinformatics-mini-challenge.html#wrap-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You have registered and logged in to an HPC training cluster, organized data, used environment modules, submitted and inspected a job, and run a reproducible bioinformatics script. For production work, benchmark resource usage and use the official cluster documentation and policies.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="submit-and-monitor-jobs-with-slurm.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/bioinformaticsdotca/DRAC_2026/blob/main/005-puttingTogether.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
