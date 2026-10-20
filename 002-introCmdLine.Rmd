@@ -1,25 +1,44 @@
-# Working with directories and files
+# Module 2: Working with directories and files
 
 ## Learning goals
 
 Navigate Linux directories, inspect text files, organize results, and transfer files between your computer and the training cluster.
 
-## Explore the shell
+## Explore the directory
 
 ```bash
 pwd                  # Where am I?
 ls                   # What is here?
-ls -lah              # Include hidden files and sizes
-cd ~                 # Return to home directory
-mkdir -p cbw-primer   # Create a workspace
-cd cbw-primer
+ls -lh               # Include modified dates, file sizes, etc.
+mkdir -p cbw-primer  # Make a direcotory / make a folder
+cd cbw-primer        # Navigate into the folder
+cd ..                # Go to the parent folder (move one level up)
+pwd
+cd ..				 # Now in /home
+pwd
+cd ..				 # Now in /
+pwd
+cd ..
+pwd
+ls -lh
+cd project           # Now in /project
+pwd
+cd /home/USERNAME	 # Replace USERNAME with your own username. Equivalent to: cd ~
+pwd
+cd ../../project     # Go back to /project with relative path
+pwd
+cd -				 # Go to the previous directory
+pwd					 # /home/USERNAME
 ```
+
+**Important:** Use `_` to replace **space** in file or folder name.
 
 Paths beginning with `/` are **absolute**; paths relative to your working directory are **relative**. `..` refers to the parent directory and `~` refers to your home directory.
 
 ## Create and inspect files
 
 ```bash
+cd /home/USERNAME/cbw-primer
 printf 'sample\treads\nA\t12\nB\t8\n' > counts.tsv
 cat counts.tsv
 head -n 2 counts.tsv
@@ -32,39 +51,45 @@ mv counts-copy.tsv counts-backup.tsv
 
 ```bash
 printf 'C\t15\n' >> counts.tsv
-less counts.tsv
+cat counts.tsv
 ```
-
-Press `q` to exit `less`. For editing, you can use `nano counts.tsv` (Ctrl+O to save, Ctrl+X to exit).
+You can use `nano counts.tsv` to edit the file. Cheat sheet: https://www.nano-editor.org/dist/latest/cheatsheet.html
 
 ## File transfer from your own computer
 
 Run the following commands in **a separate terminal on your laptop**, not inside the cluster SSH session:
 
 ```bash
-# Upload one local file to your cluster home directory
-rsync -avh ./example.txt YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/
-
 # Download a result from the cluster
-rsync -avh YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/counts.tsv ./
+rsync -avh USERNAME@cbw.c3.ca:/home/USERNAME/cbw-primer/counts.tsv ./
+
+# Upload one local file to your cluster home directory
+rsync -avh ./counts.tsv USERNAME@cbw.c3.ca:/scratch/USERNAME
 ```
 
-Change `YOUR_USERNAME` and local paths as needed. `rsync` works over SSH and can resume incremental transfers. FileZilla is a graphical alternative: select **SFTP**, host `cbw.c3.ca`, port `22`, and use your assigned workshop credentials.
+Change `USERNAME` and local paths as needed. `rsync` works over SSH and can resume incremental transfers. FileZilla is a graphical alternative: select **SFTP**, host `cbw.c3.ca`, port `22`, and use your assigned workshop credentials.
 
 ## Exercise
 
-1. Create `~/cbw-primer/results`.
-2. Create a text file with three sample names, then inspect it with `cat` and `wc -l`.
+1. Create `/home/USERNAME/cbw-primer/results` and navigate into it.
+2. Create a text file `samples.txt`, then inspect it with `cat` and `wc -l`.
 3. Upload a small text file from your laptop using `rsync` or FileZilla.
 4. Download the file back to your laptop.
 
 <details><summary>Example commands</summary>
 
 ```bash
-mkdir -p ~/cbw-primer/results
+mkdir -p /home/USERNAME/cbw-primer/results
+cd /home/USERNAME/cbw-primer/results
 printf 'sample1\nsample2\nsample3\n' > ~/cbw-primer/samples.txt
-cat ~/cbw-primer/samples.txt
+cat samples.txt
 wc -l ~/cbw-primer/samples.txt
+```
+
+From your laptop:
+
+```bash
+rsync -avh USERNAME@cbw.c3.ca:/home/USERNAME/cbw-primer/results/counts.tsv ./
 ```
 
 </details>
@@ -73,4 +98,4 @@ wc -l ~/cbw-primer/samples.txt
 
 Use descriptive filenames. Avoid generating millions of tiny files or copying large datasets unnecessarily. Ask instructors which directories are appropriate for persistent data and temporary job output; filesystem paths and quotas are cluster-specific.
 
-**Next:** Software modules and reproducible environments.
+**Next:** Module 3. Software environments and reproducibility.

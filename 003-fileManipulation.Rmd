@@ -1,4 +1,4 @@
-# Software environments and reproducibility
+# Module 3. Software environments and reproducibility
 
 ## Learning goals
 
@@ -17,44 +17,74 @@ python --version
 module list
 ```
 
-`module load` modifies your environment (for example `PATH`) for the current shell. When finished, you can use `module unload <module-name>` or `module purge`; `module purge` may also remove modules needed by other tools, so use it with care.
-
-If a command is unavailable, ask the instructors which software stack is installed rather than installing system-wide software.
+`module load` modifies your environment (for example `PATH`) for the current shell. When finished, you can use `module unload <module-name>` or `module reset`.
 
 ## Python virtual environments
 
 If Python and the `venv` module are available:
 
 ```bash
-python -m venv ~/cbw-primer/venv
+virtualenv --no-download ~/cbw-primer/venv
 source ~/cbw-primer/venv/bin/activate
 python --version
 which python
-python -m pip list
- deactivate
+pip install --no-index emoji
+pip list
+python -c 'import emoji;print(emoji.emojize(":elephant:"))'
+deactivate
+python -c 'import emoji;print(emoji.emojize(":elephant:"))'
 ```
 
-For workshop exercises, use instructor-supplied package versions. Heavy installs or builds should follow cluster policy and generally run off the login node.
+## For those who would like to use Conda:
 
-## Inspect versions and paths
+Create a definition file, e.g. `alignment.def` and edit as needed:
 
 ```bash
-command -v python
-python --version
-module list 2>&1
+Bootstrap: docker
+From: ubuntu:22.04
+Stage: build
+
+%environment
+ export LC_ALL=C
+ source /usr/local/miniconda3/bin/activate alignment
+
+%post
+ apt update && apt install -y wget
+ mkdir /conda
+ cd /conda
+ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+ bash miniconda.sh -b -u -p /usr/local/miniconda3
+ rm miniconda.sh
+ export PATH="/usr/local/miniconda3/bin":$PATH
+ eval "$(/usr/local/miniconda3/bin/conda shell.bash hook)"
+ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+ conda create -y -n alignment
+ conda activate alignment
+ conda install -n alignment -y bioconda::bwa
+ rm -rf /conda
+
 ```
 
-Record versions, parameters, input filenames, and job scripts so the work can be reproduced. Different modules or virtual environments may produce different results.
+Create the container image, which is called singularity container image file (sif):
 
-## Containers and workflows
+```bash
+module load apptainer
+apptainer build allignment.sif allignment.def
+```
 
-Tools such as Apptainer and workflow managers such as Nextflow or Snakemake can help package complex analyses, but only use them if supported by the workshop environment. Do not assume Docker can run on shared HPC nodes.
+Run the software built in the container:
+
+```bash
+module load apptainer
+apptainer exec alignment.sif bwa -h
+```
+
 
 ## Exercise
 
-1. Display available modules and the currently loaded set.
-2. Load an instructor-approved software module and check its version.
-3. Identify the executable used by `command -v`.
-4. Explain why recording versions matters when reproducing an analysis.
+1. Find the latest version of SPAdes installed and load the module.
+2. Find the installation path of loaded SPAdes.
+3. Install numpy in venv.
 
-**Next:** Submit compute jobs using Slurm.
+**Next:** Module 4. Submit and monitor jobs with Slurm

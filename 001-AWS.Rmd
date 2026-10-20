@@ -1,4 +1,4 @@
-# HPC infrastructure, registration and login
+# Module 1 - HPC infrastructure, registration and login
 
 ## Learning goals
 
@@ -6,7 +6,7 @@ By the end of this module, you should be able to describe a training cluster, re
 
 ## What is HPC?
 
-A high-performance computing (HPC) cluster combines many networked computers. A **login node** is the entry point for editing files and submitting work; **compute nodes** execute jobs. A **scheduler** (Slurm in this workshop) assigns compute resources according to job requirements and policy. Shared storage lets compute nodes access project data.
+High-performance computing (HPC) joins computing nodes, fast networking, shared storage, and a workload scheduler to support workloads that are too large or slow for a single laptop.
 
 | Component | Purpose |
 |:--|:--|
@@ -14,18 +14,58 @@ A high-performance computing (HPC) cluster combines many networked computers. A 
 | Compute node | CPU and memory resources for running analyses |
 | Slurm | Queues, allocates and monitors jobs |
 | Shared storage | Stores data accessible to jobs |
+| Local node storage | Temporary space used during a job, when configured |
+
+## Typical workflow
+
+```text
+                       HPC Cluster
+
+Your computer
+     |
+     | SSH
+     v
++-------------+
+| Login Node  |
++-------------+
+      |
+      | Submit jobs
+      v
+    Slurm
+      |
+      +-------------------------+
+      |            |            |
+      v            v            v
++-----------+ +-----------+ +-----------+
+| Compute   | | Compute   | | Compute   |
+| Node 1    | | Node 2    | | Node 3    |
++-----------+ +-----------+ +-----------+
+      \            |            /
+       \           |           /
+        +---------------------+
+        |   Shared Storage    |
+        +---------------------+
+```
 
 **Important:** Do not run computationally intensive analyses on login nodes. Submit batch jobs or request interactive allocations.
 
+## HPC terminology
+
+- **CPU core:** unit of CPU computation requested by a job.
+- **Memory (RAM):** memory required while a job runs.
+- **Wall time:** maximum elapsed run time requested.
+- **Job:** work the scheduler executes with an allocated resource request.
+- **Partition:** scheduling queue or resource grouping (available partitions vary).
+
 ## Register for the workshop
 
-1. Open the **registration link provided by the instructors** (the address is not included here because it has not yet been confirmed).
-2. Register the required **username, password and email**.
+1. Open the `https://mokey.cbw.c3.ca` and click on **Create Account**.
+2. Register the required **username, first name, last name, password and email**. The password must be at least **8 characters**.
 3. Keep your credentials private. Use the workshop account, which may be distinct from a regular DRAC account.
 
 ## Connect by SSH
 
-Open Terminal (macOS/Linux) or Windows Terminal / PowerShell with OpenSSH:
+Open Terminal (macOS/Linux) or Windows Terminal / PowerShell:
 
 ```bash
 ssh YOUR_USERNAME@cbw.c3.ca
@@ -41,7 +81,7 @@ hostname
 pwd
 ```
 
-Log out:
+To disconnect:
 
 ```bash
 exit
@@ -65,4 +105,11 @@ exit
 - **Could not resolve hostname:** Check that `cbw.c3.ca` was entered correctly and that your network can resolve it.
 - **Connection timed out:** Check connectivity or ask the instructor whether network access is restricted.
 
-**Next:** Learn to navigate and transfer files.
+## Backup solution: 
+
+- open `jupyter.cbw.c3.ca` in your browser
+- login with your username and password
+- Select **Terminal** in **User Interface**
+- click on **logout** to exit.
+
+**Next:** Module 2: Working with directories and files

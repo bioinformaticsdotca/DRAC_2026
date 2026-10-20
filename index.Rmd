@@ -17,17 +17,20 @@ favicon: img/favicon.ico
 
 Welcome to the **Canadian Bioinformatics Workshops (CBW) DRAC Primer Session**. This hands-on course introduces a shared high-performance computing (HPC) training cluster and the commands needed to run reproducible bioinformatics analyses.
 
-You will learn how to register and connect, manage files, transfer data, use software, submit and monitor Slurm jobs, and access interactive computing resources. The workshop finishes with a short bioinformatics challenge.
+You will learn how to connect, manage files, transfer data, use software, submit and monitor Slurm jobs, and access interactive computing resources. The workshop finishes with a short bioinformatics challenge.
 
 ## Workshop details {-}
 
-**Date:** Wednesday, October 28, 2026. **Audience:** CBW participants who are new to Linux or HPC. **Platform:** DRAC-hosted CBW training cluster. The instructors will provide the registration link and workshop credentials; do not post passwords in shared documents.
+**Date:** Wednesday, October 28, 2026. 
+**Audience:** CBW participants who are new to Linux or HPC. 
+**Platform:** DRAC-hosted CBW training cluster. The instructors will provide the registration link and workshop credentials; do not post passwords in shared documents.
 
 ### Before the session {-}
 
 - Bring a laptop with a working internet connection and an SSH client (Terminal on macOS/Linux, or Windows Terminal/PowerShell with OpenSSH).
-- Obtain the **registration URL from the organizers**, and register your username, password and email address as instructed.
-- The login host for this workshop is `cbw.c3.ca`; do not use a personal DRAC cluster account unless instructed.
+- Open the link `https://mokey.cbw.c3.ca`, and register your username, password and email address as instructed.
+- This session targets the beginners who has little experience in command line, linux, and HPC.
+- The login host for this workshop is `@cbw.c3.ca`; do not use a personal DRAC cluster account unless instructed.
 - Use the workshop-specific instructions rather than assumptions about other DRAC clusters.
 
 ## Course outline {-}
@@ -37,11 +40,11 @@ You will learn how to register and connect, manage files, transfer data, use sof
 
 | Time (PDT) | Module / Activity |
 |:--|:--|
-| 11:00–11:35 | Module 1: HPC Infrastructure and Access |
-| 11:35–12:10 | Module 2: Working with Files |
+| 11:00–11:35 | Module 1: HPC Infrastructure, registration and login |
+| 11:35–12:10 | Module 2: Working with directories and files |
 | 12:10–12:20 | **Break** |
-| 12:20–12:50 | Module 3: Software Environments |
-| 12:50–13:35 | Module 4: Jobs and Monitoring |
+| 12:20–12:50 | Module 3: Software environments and reproducibility |
+| 12:50–13:35 | Module 4: Submit and monitor jobs with Slurm |
 | 13:35–13:45 | **Break** |
 | 13:45–14:50 | Module 5: Bioinformatics Mini-Challenge |
 | 14:50–15:00 | Questions and Wrap-up |
@@ -50,7 +53,7 @@ The session also includes instructor-led demonstrations, exercises and breaks. F
 
 ## Getting help {-}
 
-Ask an instructor during the session. Include the command you ran, the complete error message, and (for Slurm) the job ID when requesting support. Avoid sharing passwords, access tokens or sensitive data.
+Ask an instructor during the session. You may share your screen if needed, but please avoid sharing passwords, or any other sensitive information.
 
-**Next:** Chapter 1 — HPC infrastructure and access.
+**Next:** Module 1 — HPC infrastructure and access.
 

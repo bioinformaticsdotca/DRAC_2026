@@ -1,4 +1,4 @@
-# Submit and monitor jobs with Slurm
+# Module 4. Submit and monitor jobs with Slurm
 
 ## Why use a scheduler?
 
@@ -10,70 +10,93 @@ Create `hello.sbatch` with `nano hello.sbatch` and enter:
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=cbw-hello
+#SBATCH --job-name=hello-hpc
+#SBATCH --account=def-sponsor00
 #SBATCH --time=00:05:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=1G
-#SBATCH --output=cbw-hello-%j.out
+#SBATCH --mem=1000M
 
 set -euo pipefail
-printf 'Node: '; hostname
-printf 'Job ID: %s\n' "$SLURM_JOB_ID"
-date
+printf 'Host: %s\n' "$(hostname)"
+printf 'Job: %s\n' "$SLURM_JOB_ID"
+printf 'CPUs: %s\n' "$SLURM_CPUS_PER_TASK"
+sleep 10
+printf 'Finished\n'
 ```
-
-Some training partitions require an explicit `--account` or `--partition`; the instructor will supply the correct values if needed. Do not guess account names.
 
 Submit and inspect:
 
 ```bash
 sbatch hello.sbatch
-squeue -u "$USER"
-sacct -j JOB_ID --format=JobID,State,Elapsed,MaxRSS,ExitCode
+sq
+sacct --format=JobID,State,Elapsed,MaxRSS,ExitCode,NodeList
+cat slurm_JOB_ID.out
 ```
 
 Replace `JOB_ID` with the ID returned by `sbatch`. `sacct` reporting can lag and depends on the cluster's accounting configuration.
 
 ## Understand resource requests
 
-- `--time` specifies the maximum wall-clock time.
-- `--cpus-per-task` requests CPU cores for one task; requesting more does not automatically parallelize a program.
-- `--mem` specifies memory for the job on each allocated node.
-- `--output` sets the standard-output filename; `%j` expands to the job ID.
+| Slurm Option | Description | Analogy (Restaurant) |
+|---|---|---|
+| `--time` | Maximum wall-clock time for the job | Time allowed to prepare an order |
+| `--ntasks` | Number of tasks/processes | Number of dishes being prepared simultaneously in an order |
+| `--nodes` | Number of compute nodes | Number of kitchens |
+| `--cpus-per-task` | Number of CPU cores per task | Number of chefs working on each dish |
+| `--mem` | Memory allocated per node | Available workspace in each kitchen |
 
 Request resources based on measured usage instead of reserving much more than necessary. A job may remain **PENDING** while resources are unavailable.
 
 ## Monitor and diagnose jobs
 
 ```bash
-squeue -u "$USER"
-scontrol show job JOB_ID
-sacct -j JOB_ID --format=JobID,JobName,State,Elapsed,MaxRSS,ExitCode
+sq
+sacct --format=JobID,JobName,State,Elapsed,MaxRSS,ReqTRES%60
 scancel JOB_ID                 # Only when you intend to cancel the job
+seff JOB_ID						# Display the utilization
 ```
 
 If you see `OUT_OF_MEMORY` or a time-limit failure, inspect logs and resource requests before rerunning.
 
 ## Interactive allocations
 
-For short tests and troubleshooting, if allowed by your training partition:
+### salloc
+
+For short tests and troubleshooting, request an interactive allocation:
 
 ```bash
 salloc --time=00:15:00 --cpus-per-task=1 --mem=1G
 srun --pty bash
 hostname
-exit
-exit
+htop                     # Press "q" to quit
+echo $SLURM_TMPDIR       # Display the path to local temporary storage
+exit                     # Exit the compute-node shell
+exit                     # Release the allocation
 ```
 
-`exit` releases the interactive shell; leave the allocation shell too when finished. Some clusters configure `salloc` differently; follow the instructor's cluster-specific guidance.
+The first `exit` closes the interactive shell on the compute node. The second `exit` leaves the allocation shell and releases the Slurm allocation.
 
-## JupyterHub
+### JupyterHub
 
-If the workshop provides JupyterHub, use the **verified URL announced by the instructor**. Connect with the workshop credentials, select an approved compute profile, and shut down your session after use. Do not assume that the SSH login host is also the JupyterHub host.
+Open **[the workshop JupyterHub](https://jupyter.cbw.c3.ca)** in your browser and follow the organizer's instructions.
+
+A typical workflow is:
+
+1. Sign in with your workshop credentials.
+2. Select an available compute profile, if prompted.
+3. Launch a notebook or terminal.
+4. Shut down your session when finished.
 
 ## Exercise
 
-Submit `hello.sbatch`, find its job ID, inspect its output, and report whether the job completed successfully. Discuss why Slurm jobs are preferable to long-running processes on login nodes.
+Submit a new job which runs the following command:
 
-**Next:** Apply shell tools and Slurm to a bioinformatics exercise.
+```bash
+timeout 120s bash -c 'x=$(head -c 250M /dev/zero | tr "\0" x); sleep 120'
+```
+
+find its job ID, inspect its output log, and report whether the job completed successfully.
+
+**Next:** Module 5. Bioinformatics Mini-Challenge.

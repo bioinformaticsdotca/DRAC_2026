@@ -1,10 +1,10 @@
-# Bioinformatics mini-challenge
+# Module 5. Bioinformatics Mini-Challenge
 
 ## Goal
 
 Combine shell operations, a small sequence dataset, a reproducible script and a Slurm batch job. All data are generated inside your workspace; no external downloads are required.
 
-## Step 1: Create a sample FASTA file
+## 1: Create a sample FASTA file
 
 ```bash
 mkdir -p ~/cbw-primer/challenge
@@ -21,7 +21,7 @@ EOF
 
 FASTA records begin with `>` followed by an identifier and one or more sequence lines.
 
-## Step 2: Explore the data
+## 2: Explore the data
 
 ```bash
 head sequences.fa
@@ -29,7 +29,7 @@ grep -c '^>' sequences.fa
 wc -l sequences.fa
 ```
 
-**Question:** How many sequences are present? Why is `wc -l` not always a reliable sequence counter for FASTA?
+**Question:** How many sequences are present? Can I use `wc -l` then devided by 2 to count the number of sequences?
 
 <details><summary>Answer</summary>
 
@@ -37,7 +37,7 @@ There are **3 sequences**. FASTA sequences can occupy multiple lines, so countin
 
 </details>
 
-## Step 3: Build a simple analysis script
+## 3: Build a simple analysis script
 
 Save the following as `analyze.sh`:
 
@@ -60,17 +60,19 @@ bash analyze.sh sequences.fa
 
 Expected results: **3 sequences** and **24 bases**. The base count sums sequence-line lengths and supports wrapped FASTA records.
 
-## Step 4: Submit the analysis to Slurm
+## 4: Submit the analysis to Slurm
 
 Save as `analyze.sbatch`:
 
 ```bash
 #!/bin/bash
+#SBATCH --account=def-sponsor00
 #SBATCH --job-name=fasta-count
 #SBATCH --time=00:05:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=1G
-#SBATCH --output=fasta-count-%j.out
+#SBATCH --mem=1000M
 
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
@@ -81,22 +83,30 @@ Run:
 
 ```bash
 sbatch analyze.sbatch
-squeue -u "$USER"
+sq
 ```
 
-Once it finishes, inspect the `fasta-count-JOBID.out` file (replace `JOBID` with the actual number). If your training allocation requires `--account` or `--partition`, use the instructor-provided values.
+Once it finishes, inspect the `slurm-JOBID.out` file (replace `JOBID` with the actual number). 
 
-## Step 5: Save and transfer results
+## 5: Save and transfer results
 
 From your laptop, retrieve the output with `rsync` (substitute the job ID and workshop username):
 
 ```bash
-rsync -avh YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/challenge/fasta-count-JOBID.out ./
+rsync -avh YOUR_USERNAME@cbw.c3.ca:~/cbw-primer/challenge/slurm-JOBID.out ./
 ```
 
-## Stretch challenge
+## 6: Stretch challenge
 
 Modify `analyze.sh` to accept multiple FASTA files, using a `for filename in "$@"` loop. Consider how you would process hundreds of files using a Slurm job array rather than running one long serial task.
+
+## 7. Best practices
+
+- Do NOT run the entire workflow in a single job!!!!!!
+- Estimate the walltime, RAM, CPUs etc by benchmarking the tools
+- Find the bottleneck of the tool
+- Avoid duplicating the large public dataset such as NCBI BLAST database, Kraken2, Alphafold3, ColabFold, gnomAD ete, which might be found at: `/cvmfs/bio.data.computecanada.ca`
+- Understand the pros/cons of different file systems, such as `$SLURM_TMPDIR`, `/scratch`, `/project`, `/home`, `/nearline`
 
 ## Wrap-up
 
