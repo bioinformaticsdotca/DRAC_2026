@@ -36,6 +36,46 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
@@ -111,38 +151,75 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\chapter{DRAC Primer Info}\label{drac-primer-info}
+\chapter*{Introduction}\label{introduction}
+\addcontentsline{toc}{chapter}{Introduction}
 
-Coming soon!
+Welcome to the \textbf{Canadian Bioinformatics Workshops (CBW) DRAC Primer Session}. This hands-on course introduces a shared high-performance computing (HPC) training cluster and the commands needed to run reproducible bioinformatics analyses.
 
-\subsection{Data download}\label{data-download}
+You will learn how to connect, manage files, transfer data, use software, submit and monitor Slurm jobs, and access interactive computing resources. The workshop finishes with a short bioinformatics challenge.
 
-Coming soon!
+\section*{Slides}\label{slides}
+\addcontentsline{toc}{section}{Slides}
 
-\subsection{Schedule}\label{schedule}
+Please find below the slides for this session.
 
-\textbf{High-Throughput Genomics DRAC Pre-Session 2026}: Wednesday, October 28, 2026
+\section*{Workshop Details}\label{workshop-details}
+\addcontentsline{toc}{section}{Workshop Details}
+
+\textbf{Date:} Wednesday, October 28, 2026.
+\textbf{Audience:} CBW participants who are new to Linux or HPC.
+\textbf{Platform:} DRAC-hosted CBW training cluster. The instructors will provide the registration link and workshop credentials; do not post passwords in shared documents.
+
+\subsection*{Before the session}\label{before-the-session}
+\addcontentsline{toc}{subsection}{Before the session}
+
+\begin{itemize}
+\tightlist
+\item
+  Bring a laptop with a working internet connection and an SSH client (Terminal on macOS/Linux, or Windows Terminal/PowerShell with OpenSSH).
+\item
+  Open the link \texttt{https://mokey.cbw.c3.ca}, and register your username, password and email address as instructed.
+\item
+  This session targets the beginners who has little experience in command line, linux, and HPC.
+\item
+  The login host for this workshop is \texttt{@cbw.c3.ca}; do not use a personal DRAC cluster account unless instructed.
+\item
+  Use the workshop-specific instructions rather than assumptions about other DRAC clusters.
+\end{itemize}
+
+\section*{Course Outline}\label{course-outline}
+\addcontentsline{toc}{section}{Course Outline}
+
+\textbf{Date:} Wednesday, October 28, 2026\\
+\textbf{Time:} 11:00--15:00 PDT
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cc@{}}
+\begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
-(PDT) & Module \\
+Time (PDT) & Module / Activity \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-11:00 & Welcome Introduction \\
-11:10 & Module 1: Logging into DRAC \\
-12:10 & Short Break \\
-12:15 & Module 2: Introduction to the Command Line \\
-12:35 & Module 3: File Manipulation \\
-13:05 & Long Break \\
-14:05 & Module 4: Searching and Sorting Through Files \\
-15:00 & Short Break \\
-15:05 & Module 5: Shell scripts \\
-16:00 & Finished \\
+11:00--11:35 & Module 1: HPC Infrastructure, registration and login \\
+11:35--12:10 & Module 2: Working with directories and files \\
+12:10--12:20 & \textbf{Break} \\
+12:20--12:50 & Module 3: Software environments and reproducibility \\
+12:50--13:35 & Module 4: Submit and monitor jobs with Slurm \\
+13:35--13:45 & \textbf{Break} \\
+13:45--14:50 & Module 5: Bioinformatics Mini-Challenge \\
+14:50--15:00 & Questions and Wrap-up \\
 \end{longtable}
 }
+
+The session also includes instructor-led demonstrations, exercises and breaks. Follow the instructor's live timing announcements; the final timetable is distributed by CBW.
+
+\section*{Getting Help}\label{getting-help}
+\addcontentsline{toc}{section}{Getting Help}
+
+Ask an instructor during the session. You may share your screen if needed, but please avoid sharing passwords, or any other sensitive information.
+
+\textbf{Next:} Module 1 --- HPC infrastructure and access.
 
 \chapter{Meet Your Faculty}\label{meet-your-faculty}
 
@@ -175,6 +252,676 @@ Vancouver, BC, Canada
 Tian completed her Master of Public Health in 2022 from Simon Fraser University and is currently a researcher and project lead at the Center for Infectious Disease Genomics and One Health (CIDGOH). She has been extensively involved in researching SARS-CoV-2 data-sharing through the Canadian COVID-19 Genomics Network (CanCOGeN), alongside leading efforts to understand metadata reporting in genomic epidemiology studies for outbreak and surveillance investigation. Her background in public health and knowledge in contextual data reporting intersect harmoniously to help inform current and future emergency response initiatives.
 
 As British Columbia's regional coordinator for the Canadian Bioinformatics Hub, Tian is passionate about and dedicated to connecting bioinformatics communities and groups across the province. She aims to grow, develop, and expand data science and bioinformatics tools and training materials for prospective or new professionals, as well as for those looking to advance in their current careers. Tian believes accessibility, access, and availability of these tools and training opportunities are the cornerstone of growing our bioinformatics communities across the region.
+
+\chapter{Module 1 - HPC infrastructure, registration and login}\label{module-1---hpc-infrastructure-registration-and-login}
+
+\section{Learning goals}\label{learning-goals}
+
+By the end of this module, you should be able to describe a training cluster, register for the workshop, and connect through SSH.
+
+\section{What is HPC?}\label{what-is-hpc}
+
+High-performance computing (HPC) joins computing nodes, fast networking, shared storage, and a workload scheduler to support workloads that are too large or slow for a single laptop.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Component
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Login node & SSH access, lightweight editing, compilation, job submission \\
+Compute node & CPU and memory resources for running analyses \\
+Slurm & Queues, allocates and monitors jobs \\
+Shared storage & Stores data accessible to jobs \\
+Local node storage & Temporary space used during a job, when configured \\
+\end{longtable}
+}
+
+\section{Typical workflow}\label{typical-workflow}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{                       HPC Cluster}
+
+\NormalTok{Your computer}
+\NormalTok{     |}
+\NormalTok{     | SSH}
+\NormalTok{     v}
+\NormalTok{+{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+}
+\NormalTok{| Login Node  |}
+\NormalTok{+{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+}
+\NormalTok{      |}
+\NormalTok{      | Submit jobs}
+\NormalTok{      v}
+\NormalTok{    Slurm}
+\NormalTok{      |}
+\NormalTok{      +{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+}
+\NormalTok{      |            |            |}
+\NormalTok{      v            v            v}
+\NormalTok{+{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+ +{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+ +{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+}
+\NormalTok{| Compute   | | Compute   | | Compute   |}
+\NormalTok{| Node 1    | | Node 2    | | Node 3    |}
+\NormalTok{+{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+ +{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+ +{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+}
+\NormalTok{      \textbackslash{}            |            /}
+\NormalTok{       \textbackslash{}           |           /}
+\NormalTok{        +{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+}
+\NormalTok{        |   Shared Storage    |}
+\NormalTok{        +{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Important:} Do not run computationally intensive analyses on login nodes. Submit batch jobs or request interactive allocations.
+
+\section{HPC terminology}\label{hpc-terminology}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{CPU core:} unit of CPU computation requested by a job.
+\item
+  \textbf{Memory (RAM):} memory required while a job runs.
+\item
+  \textbf{Wall time:} maximum elapsed run time requested.
+\item
+  \textbf{Job:} work the scheduler executes with an allocated resource request.
+\item
+  \textbf{Partition:} scheduling queue or resource grouping (available partitions vary).
+\end{itemize}
+
+\section{Register for the workshop}\label{register-for-the-workshop}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open the \texttt{https://mokey.cbw.c3.ca} and click on \textbf{Create Account}.
+\item
+  Register the required \textbf{username, first name, last name, password and email}. The password must be at least \textbf{8 characters}.
+\item
+  Keep your credentials private. Use the workshop account, which may be distinct from a regular DRAC account.
+\end{enumerate}
+
+\section{Connect by SSH}\label{connect-by-ssh}
+
+Open Terminal (macOS/Linux) or Windows Terminal / PowerShell:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ssh}\NormalTok{ YOUR\_USERNAME@cbw.c3.ca}
+\end{Highlighting}
+\end{Shaded}
+
+Replace \texttt{YOUR\_USERNAME} with the username you registered. Confirm the host key only after verifying the hostname with the instructors, then enter your password when prompted. The password is not shown as you type.
+
+Verify where you are:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{whoami}
+\FunctionTok{hostname}
+\BuiltInTok{pwd}
+\end{Highlighting}
+\end{Shaded}
+
+To disconnect:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{exit}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Exercise: first login}\label{exercise-first-login}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Connect to \texttt{cbw.c3.ca}.
+\item
+  Run \texttt{whoami}, \texttt{hostname}, and \texttt{pwd}.
+\item
+  Identify which machine you are on and why intensive computation belongs on compute nodes.
+\end{enumerate}
+
+Check your understanding
+
+\texttt{whoami} prints your login name; \texttt{hostname} prints the machine name; \texttt{pwd} prints your current directory. Exact values depend on your account and the current training infrastructure.
+
+\section{Common connection issues}\label{common-connection-issues}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Permission denied:} Confirm the username and workshop password; do not share credentials.
+\item
+  \textbf{Could not resolve hostname:} Check that \texttt{cbw.c3.ca} was entered correctly and that your network can resolve it.
+\item
+  \textbf{Connection timed out:} Check connectivity or ask the instructor whether network access is restricted.
+\end{itemize}
+
+\section{Backup solution:}\label{backup-solution}
+
+\begin{itemize}
+\tightlist
+\item
+  open \texttt{jupyter.cbw.c3.ca} in your browser
+\item
+  login with your username and password
+\item
+  Select \textbf{Terminal} in \textbf{User Interface}
+\item
+  click on \textbf{logout} to exit.
+\end{itemize}
+
+\textbf{Next:} Module 2: Working with directories and files
+
+\chapter{Module 2: Working with directories and files}\label{module-2-working-with-directories-and-files}
+
+\section{Learning goals}\label{learning-goals-1}
+
+Navigate Linux directories, inspect text files, organize results, and transfer files between your computer and the training cluster.
+
+\section{Explore the directory}\label{explore-the-directory}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{pwd}                  \CommentTok{\# Where am I?}
+\FunctionTok{ls}                   \CommentTok{\# What is here?}
+\FunctionTok{ls} \AttributeTok{{-}lh}               \CommentTok{\# Include modified dates, file sizes, etc.}
+\FunctionTok{mkdir} \AttributeTok{{-}p}\NormalTok{ cbw{-}primer  }\CommentTok{\# Make a direcotory / make a folder}
+\BuiltInTok{cd}\NormalTok{ cbw{-}primer        }\CommentTok{\# Navigate into the folder}
+\BuiltInTok{cd}\NormalTok{ ..                }\CommentTok{\# Go to the parent folder (move one level up)}
+\BuiltInTok{pwd}
+\BuiltInTok{cd}\NormalTok{ ..                }\CommentTok{\# Now in /home}
+\BuiltInTok{pwd}
+\BuiltInTok{cd}\NormalTok{ ..                }\CommentTok{\# Now in /}
+\BuiltInTok{pwd}
+\BuiltInTok{cd}\NormalTok{ ..}
+\BuiltInTok{pwd}
+\FunctionTok{ls} \AttributeTok{{-}lh}
+\BuiltInTok{cd}\NormalTok{ project           }\CommentTok{\# Now in /project}
+\BuiltInTok{pwd}
+\BuiltInTok{cd}\NormalTok{ /home/USERNAME    }\CommentTok{\# Replace USERNAME with your own username. Equivalent to: cd \textasciitilde{}}
+\BuiltInTok{pwd}
+\BuiltInTok{cd}\NormalTok{ ../../project     }\CommentTok{\# Go back to /project with relative path}
+\BuiltInTok{pwd}
+\BuiltInTok{cd} \AttributeTok{{-}}                 \CommentTok{\# Go to the previous directory}
+\BuiltInTok{pwd}                  \CommentTok{\# /home/USERNAME}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Important:} Use \texttt{\_} to replace \textbf{space} in file or folder name.
+
+Paths beginning with \texttt{/} are \textbf{absolute}; paths relative to your working directory are \textbf{relative}. \texttt{..} refers to the parent directory and \texttt{\textasciitilde{}} refers to your home directory.
+
+\section{Create and inspect files}\label{create-and-inspect-files}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ /home/USERNAME/cbw{-}primer}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}sample\textbackslash{}treads\textbackslash{}nA\textbackslash{}t12\textbackslash{}nB\textbackslash{}t8\textbackslash{}n\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ counts.tsv}
+\FunctionTok{cat}\NormalTok{ counts.tsv}
+\FunctionTok{head} \AttributeTok{{-}n}\NormalTok{ 2 counts.tsv}
+\FunctionTok{wc} \AttributeTok{{-}l}\NormalTok{ counts.tsv}
+\FunctionTok{cp}\NormalTok{ counts.tsv counts{-}copy.tsv}
+\FunctionTok{mv}\NormalTok{ counts{-}copy.tsv counts{-}backup.tsv}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{\textgreater{}} creates or overwrites a file. Use it carefully. Use \texttt{\textgreater{}\textgreater{}} to append.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{printf} \StringTok{\textquotesingle{}C\textbackslash{}t15\textbackslash{}n\textquotesingle{}} \OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ counts.tsv}
+\FunctionTok{cat}\NormalTok{ counts.tsv}
+\end{Highlighting}
+\end{Shaded}
+
+You can use \texttt{nano\ counts.tsv} to edit the file. Cheat sheet: \url{https://www.nano-editor.org/dist/latest/cheatsheet.html}
+
+\section{File transfer from your own computer}\label{file-transfer-from-your-own-computer}
+
+Run the following commands in \textbf{a separate terminal on your laptop}, not inside the cluster SSH session:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Download a result from the cluster}
+\FunctionTok{rsync} \AttributeTok{{-}avh}\NormalTok{ USERNAME@cbw.c3.ca:/home/USERNAME/cbw{-}primer/counts.tsv ./}
+
+\CommentTok{\# Upload one local file to your cluster home directory}
+\FunctionTok{rsync} \AttributeTok{{-}avh}\NormalTok{ ./counts.tsv USERNAME@cbw.c3.ca:/scratch/USERNAME}
+\end{Highlighting}
+\end{Shaded}
+
+Change \texttt{USERNAME} and local paths as needed. \texttt{rsync} works over SSH and can resume incremental transfers. FileZilla is a graphical alternative: select \textbf{SFTP}, host \texttt{cbw.c3.ca}, port \texttt{22}, and use your assigned workshop credentials.
+
+\section{Exercise}\label{exercise}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create \texttt{/home/USERNAME/cbw-primer/results} and navigate into it.
+\item
+  Create a text file \texttt{samples.txt}, then inspect it with \texttt{cat} and \texttt{wc\ -l}.
+\item
+  Upload a small text file from your laptop using \texttt{rsync} or FileZilla.
+\item
+  Download the file back to your laptop.
+\end{enumerate}
+
+Example commands
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir} \AttributeTok{{-}p}\NormalTok{ /home/USERNAME/cbw{-}primer/results}
+\BuiltInTok{cd}\NormalTok{ /home/USERNAME/cbw{-}primer/results}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}sample1\textbackslash{}nsample2\textbackslash{}nsample3\textbackslash{}n\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ \textasciitilde{}/cbw{-}primer/samples.txt}
+\FunctionTok{cat}\NormalTok{ samples.txt}
+\FunctionTok{wc} \AttributeTok{{-}l}\NormalTok{ \textasciitilde{}/cbw{-}primer/samples.txt}
+\end{Highlighting}
+\end{Shaded}
+
+From your laptop:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rsync} \AttributeTok{{-}avh}\NormalTok{ USERNAME@cbw.c3.ca:/home/USERNAME/cbw{-}primer/results/counts.tsv ./}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Shared filesystem etiquette}\label{shared-filesystem-etiquette}
+
+Use descriptive filenames. Avoid generating millions of tiny files or copying large datasets unnecessarily. Ask instructors which directories are appropriate for persistent data and temporary job output; filesystem paths and quotas are cluster-specific.
+
+\textbf{Next:} Module 3. Software environments and reproducibility.
+
+\chapter{Module 3. Software environments and reproducibility}\label{module-3.-software-environments-and-reproducibility}
+
+\section{Learning goals}\label{learning-goals-2}
+
+Find available software, load an environment module, and identify the commands and versions used in an analysis.
+
+\section{Environment modules}\label{environment-modules}
+
+Clusters provide software through \textbf{environment modules}. Available applications and versions depend on the training system.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{module}\NormalTok{ avail}
+\ExtensionTok{module}\NormalTok{ list}
+\ExtensionTok{module}\NormalTok{ spider python       }\CommentTok{\# Available on systems using Lmod}
+\ExtensionTok{module}\NormalTok{ load python         }\CommentTok{\# If an appropriate Python module is available}
+\ExtensionTok{python} \AttributeTok{{-}{-}version}
+\ExtensionTok{module}\NormalTok{ list}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{module\ load} modifies your environment (for example \texttt{PATH}) for the current shell. When finished, you can use \texttt{module\ unload\ \textless{}module-name\textgreater{}} or \texttt{module\ reset}.
+
+\section{Python virtual environments}\label{python-virtual-environments}
+
+If Python and the \texttt{venv} module are available:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{virtualenv} \AttributeTok{{-}{-}no{-}download}\NormalTok{ \textasciitilde{}/cbw{-}primer/venv}
+\BuiltInTok{source}\NormalTok{ \textasciitilde{}/cbw{-}primer/venv/bin/activate}
+\ExtensionTok{python} \AttributeTok{{-}{-}version}
+\FunctionTok{which}\NormalTok{ python}
+\ExtensionTok{pip}\NormalTok{ install }\AttributeTok{{-}{-}no{-}index}\NormalTok{ emoji}
+\ExtensionTok{pip}\NormalTok{ list}
+\ExtensionTok{python} \AttributeTok{{-}c} \StringTok{\textquotesingle{}import emoji;print(emoji.emojize(":elephant:"))\textquotesingle{}}
+\ExtensionTok{deactivate}
+\ExtensionTok{python} \AttributeTok{{-}c} \StringTok{\textquotesingle{}import emoji;print(emoji.emojize(":elephant:"))\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\section{For those who would like to use Conda:}\label{for-those-who-would-like-to-use-conda}
+
+Create a definition file, e.g.~\texttt{alignment.def} and edit as needed:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{Bootstrap:}\NormalTok{ docker}
+\ExtensionTok{From:}\NormalTok{ ubuntu:22.04}
+\ExtensionTok{Stage:}\NormalTok{ build}
+
+\ExtensionTok{\%environment}
+ \BuiltInTok{export} \VariableTok{LC\_ALL}\OperatorTok{=}\NormalTok{C}
+ \BuiltInTok{source}\NormalTok{ /usr/local/miniconda3/bin/activate alignment}
+
+\ExtensionTok{\%post}
+ \ExtensionTok{apt}\NormalTok{ update }\KeywordTok{\&\&} \ExtensionTok{apt}\NormalTok{ install }\AttributeTok{{-}y}\NormalTok{ wget}
+ \FunctionTok{mkdir}\NormalTok{ /conda}
+ \BuiltInTok{cd}\NormalTok{ /conda}
+ \FunctionTok{wget}\NormalTok{ https://repo.anaconda.com/miniconda/Miniconda3{-}latest{-}Linux{-}x86\_64.sh }\AttributeTok{{-}O}\NormalTok{ miniconda.sh}
+ \FunctionTok{bash}\NormalTok{ miniconda.sh }\AttributeTok{{-}b} \AttributeTok{{-}u} \AttributeTok{{-}p}\NormalTok{ /usr/local/miniconda3}
+ \FunctionTok{rm}\NormalTok{ miniconda.sh}
+ \BuiltInTok{export} \VariableTok{PATH}\OperatorTok{=}\StringTok{"/usr/local/miniconda3/bin"}\NormalTok{:}\VariableTok{$PATH}
+ \BuiltInTok{eval} \StringTok{"}\VariableTok{$(}\ExtensionTok{/usr/local/miniconda3/bin/conda}\NormalTok{ shell.bash hook}\VariableTok{)}\StringTok{"}
+ \ExtensionTok{conda}\NormalTok{ tos accept }\AttributeTok{{-}{-}override{-}channels} \AttributeTok{{-}{-}channel}\NormalTok{ https://repo.anaconda.com/pkgs/main}
+ \ExtensionTok{conda}\NormalTok{ tos accept }\AttributeTok{{-}{-}override{-}channels} \AttributeTok{{-}{-}channel}\NormalTok{ https://repo.anaconda.com/pkgs/r}
+ \ExtensionTok{conda}\NormalTok{ create }\AttributeTok{{-}y} \AttributeTok{{-}n}\NormalTok{ alignment}
+ \ExtensionTok{conda}\NormalTok{ activate alignment}
+ \ExtensionTok{conda}\NormalTok{ install }\AttributeTok{{-}n}\NormalTok{ alignment }\AttributeTok{{-}y}\NormalTok{ bioconda::bwa}
+ \FunctionTok{rm} \AttributeTok{{-}rf}\NormalTok{ /conda}
+\end{Highlighting}
+\end{Shaded}
+
+Create the container image, which is called singularity container image file (sif):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{module}\NormalTok{ load apptainer}
+\ExtensionTok{apptainer}\NormalTok{ build allignment.sif allignment.def}
+\end{Highlighting}
+\end{Shaded}
+
+Run the software built in the container:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{module}\NormalTok{ load apptainer}
+\ExtensionTok{apptainer}\NormalTok{ exec alignment.sif bwa }\AttributeTok{{-}h}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Exercise}\label{exercise-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find the latest version of SPAdes installed and load the module.
+\item
+  Find the installation path of loaded SPAdes.
+\item
+  Install numpy in venv.
+\end{enumerate}
+
+\textbf{Next:} Module 4. Submit and monitor jobs with Slurm
+
+\chapter{Module 4. Submit and monitor jobs with Slurm}\label{module-4.-submit-and-monitor-jobs-with-slurm}
+
+\section{Why use a scheduler?}\label{why-use-a-scheduler}
+
+On HPC, computation is submitted as a \textbf{job}. Slurm reserves cores, memory and time, and executes the job on an allocated compute node rather than on the login node.
+
+\section{Write a batch script}\label{write-a-batch-script}
+
+Create \texttt{hello.sbatch} with \texttt{nano\ hello.sbatch} and enter:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/bin/bash}
+\CommentTok{\#SBATCH {-}{-}job{-}name=hello{-}hpc}
+\CommentTok{\#SBATCH {-}{-}account=def{-}sponsor00}
+\CommentTok{\#SBATCH {-}{-}time=00:05:00}
+\CommentTok{\#SBATCH {-}{-}nodes=1}
+\CommentTok{\#SBATCH {-}{-}ntasks=1}
+\CommentTok{\#SBATCH {-}{-}cpus{-}per{-}task=1}
+\CommentTok{\#SBATCH {-}{-}mem=1000M}
+
+\BuiltInTok{set} \AttributeTok{{-}euo}\NormalTok{ pipefail}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}Host: \%s\textbackslash{}n\textquotesingle{}} \StringTok{"}\VariableTok{$(}\FunctionTok{hostname}\VariableTok{)}\StringTok{"}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}Job: \%s\textbackslash{}n\textquotesingle{}} \StringTok{"}\VariableTok{$SLURM\_JOB\_ID}\StringTok{"}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}CPUs: \%s\textbackslash{}n\textquotesingle{}} \StringTok{"}\VariableTok{$SLURM\_CPUS\_PER\_TASK}\StringTok{"}
+\FunctionTok{sleep}\NormalTok{ 10}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}Finished\textbackslash{}n\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+Submit and inspect:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{sbatch}\NormalTok{ hello.sbatch}
+\ExtensionTok{sq}
+\ExtensionTok{sacct} \AttributeTok{{-}{-}format}\OperatorTok{=}\NormalTok{JobID,State,Elapsed,MaxRSS,ExitCode,NodeList}
+\FunctionTok{cat}\NormalTok{ slurm\_JOB\_ID.out}
+\end{Highlighting}
+\end{Shaded}
+
+Replace \texttt{JOB\_ID} with the ID returned by \texttt{sbatch}. \texttt{sacct} reporting can lag and depends on the cluster's accounting configuration.
+
+\section{Understand resource requests}\label{understand-resource-requests}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Slurm Option
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Analogy (Restaurant)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{-\/-time} & Maximum wall-clock time for the job & Time allowed to prepare an order \\
+\texttt{-\/-ntasks} & Number of tasks/processes & Number of dishes being prepared simultaneously in an order \\
+\texttt{-\/-nodes} & Number of compute nodes & Number of kitchens \\
+\texttt{-\/-cpus-per-task} & Number of CPU cores per task & Number of chefs working on each dish \\
+\texttt{-\/-mem} & Memory allocated per node & Available workspace in each kitchen \\
+\end{longtable}
+}
+
+Request resources based on measured usage instead of reserving much more than necessary. A job may remain \textbf{PENDING} while resources are unavailable.
+
+\section{Monitor and diagnose jobs}\label{monitor-and-diagnose-jobs}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{sq}
+\ExtensionTok{sacct} \AttributeTok{{-}{-}format}\OperatorTok{=}\NormalTok{JobID,JobName,State,Elapsed,MaxRSS,ReqTRES\%60}
+\ExtensionTok{scancel}\NormalTok{ JOB\_ID                 }\CommentTok{\# Only when you intend to cancel the job}
+\ExtensionTok{seff}\NormalTok{ JOB\_ID                     }\CommentTok{\# Display the utilization}
+\end{Highlighting}
+\end{Shaded}
+
+If you see \texttt{OUT\_OF\_MEMORY} or a time-limit failure, inspect logs and resource requests before rerunning.
+
+\section{Interactive allocations}\label{interactive-allocations}
+
+\subsection{salloc}\label{salloc}
+
+For short tests and troubleshooting, request an interactive allocation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{salloc} \AttributeTok{{-}{-}time}\OperatorTok{=}\NormalTok{00:15:00 }\AttributeTok{{-}{-}cpus{-}per{-}task}\OperatorTok{=}\NormalTok{1 }\AttributeTok{{-}{-}mem}\OperatorTok{=}\NormalTok{1G}
+\ExtensionTok{srun} \AttributeTok{{-}{-}pty}\NormalTok{ bash}
+\FunctionTok{hostname}
+\ExtensionTok{htop}                     \CommentTok{\# Press "q" to quit}
+\BuiltInTok{echo} \VariableTok{$SLURM\_TMPDIR}       \CommentTok{\# Display the path to local temporary storage}
+\BuiltInTok{exit}                     \CommentTok{\# Exit the compute{-}node shell}
+\BuiltInTok{exit}                     \CommentTok{\# Release the allocation}
+\end{Highlighting}
+\end{Shaded}
+
+The first \texttt{exit} closes the interactive shell on the compute node. The second \texttt{exit} leaves the allocation shell and releases the Slurm allocation.
+
+\subsection{JupyterHub}\label{jupyterhub}
+
+Open \textbf{\href{https://jupyter.cbw.c3.ca}{the workshop JupyterHub}} in your browser and follow the organizer's instructions.
+
+A typical workflow is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Sign in with your workshop credentials.
+\item
+  Select an available compute profile, if prompted.
+\item
+  Launch a notebook or terminal.
+\item
+  Shut down your session when finished.
+\end{enumerate}
+
+\section{Exercise}\label{exercise-2}
+
+Submit a new job which runs the following command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{timeout}\NormalTok{ 120s bash }\AttributeTok{{-}c} \StringTok{\textquotesingle{}x=$(head {-}c 250M /dev/zero | tr "\textbackslash{}0" x); sleep 120\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+find its job ID, inspect its output log, and report whether the job completed successfully.
+
+\textbf{Next:} Module 5. Bioinformatics Mini-Challenge.
+
+\chapter{Module 5. Bioinformatics Mini-Challenge}\label{module-5.-bioinformatics-mini-challenge}
+
+\section{Goal}\label{goal}
+
+Combine shell operations, a small sequence dataset, a reproducible script and a Slurm batch job. All data are generated inside your workspace; no external downloads are required.
+
+\section{1: Create a sample FASTA file}\label{create-a-sample-fasta-file}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir} \AttributeTok{{-}p}\NormalTok{ \textasciitilde{}/cbw{-}primer/challenge}
+\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/cbw{-}primer/challenge}
+\FunctionTok{cat} \OperatorTok{\textgreater{}}\NormalTok{ sequences.fa }\OperatorTok{\textless{}\textless{}\textquotesingle{}EOF\textquotesingle{}}
+\StringTok{\textgreater{}seqA}
+\StringTok{ACGTACGT}
+\StringTok{\textgreater{}seqB}
+\StringTok{GGGTTT}
+\StringTok{\textgreater{}seqC}
+\StringTok{ATATATATAT}
+\OperatorTok{EOF}
+\end{Highlighting}
+\end{Shaded}
+
+FASTA records begin with \texttt{\textgreater{}} followed by an identifier and one or more sequence lines.
+
+\section{2: Explore the data}\label{explore-the-data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{ sequences.fa}
+\FunctionTok{grep} \AttributeTok{{-}c} \StringTok{\textquotesingle{}\^{}\textgreater{}\textquotesingle{}}\NormalTok{ sequences.fa}
+\FunctionTok{wc} \AttributeTok{{-}l}\NormalTok{ sequences.fa}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Question:} How many sequences are present? Can I use \texttt{wc\ -l} then devided by 2 to count the number of sequences?
+
+Answer
+
+There are \textbf{3 sequences}. FASTA sequences can occupy multiple lines, so counting total lines does not count records reliably. Counting header lines beginning with \texttt{\textgreater{}} is appropriate for well-formed FASTA.
+
+\section{3: Build a simple analysis script}\label{build-a-simple-analysis-script}
+
+Save the following as \texttt{analyze.sh}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/bin/bash}
+\BuiltInTok{set} \AttributeTok{{-}euo}\NormalTok{ pipefail}
+\VariableTok{input}\OperatorTok{=}\StringTok{"}\VariableTok{$\{1}\OperatorTok{:?}\NormalTok{Usage: bash analyze.sh INPUT.fa}\VariableTok{\}}\StringTok{"}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}Input: \%s\textbackslash{}n\textquotesingle{}} \StringTok{"}\VariableTok{$input}\StringTok{"}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}Sequences: \textquotesingle{}}
+\FunctionTok{grep} \AttributeTok{{-}c} \StringTok{\textquotesingle{}\^{}\textgreater{}\textquotesingle{}} \StringTok{"}\VariableTok{$input}\StringTok{"}
+\BuiltInTok{printf} \StringTok{\textquotesingle{}Total bases: \textquotesingle{}}
+\FunctionTok{awk} \StringTok{\textquotesingle{}!/\^{}\textgreater{}/ \{gsub(/[[:space:]]/, ""); n += length($0)\} END \{print n+0\}\textquotesingle{}} \StringTok{"}\VariableTok{$input}\StringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+Run it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{bash}\NormalTok{ analyze.sh sequences.fa}
+\end{Highlighting}
+\end{Shaded}
+
+Expected results: \textbf{3 sequences} and \textbf{24 bases}. The base count sums sequence-line lengths and supports wrapped FASTA records.
+
+\section{4: Submit the analysis to Slurm}\label{submit-the-analysis-to-slurm}
+
+Save as \texttt{analyze.sbatch}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/bin/bash}
+\CommentTok{\#SBATCH {-}{-}account=def{-}sponsor00}
+\CommentTok{\#SBATCH {-}{-}job{-}name=fasta{-}count}
+\CommentTok{\#SBATCH {-}{-}time=00:05:00}
+\CommentTok{\#SBATCH {-}{-}nodes=1}
+\CommentTok{\#SBATCH {-}{-}ntasks=1}
+\CommentTok{\#SBATCH {-}{-}cpus{-}per{-}task=1}
+\CommentTok{\#SBATCH {-}{-}mem=1000M}
+
+\BuiltInTok{set} \AttributeTok{{-}euo}\NormalTok{ pipefail}
+\BuiltInTok{cd} \StringTok{"}\VariableTok{$SLURM\_SUBMIT\_DIR}\StringTok{"}
+\FunctionTok{bash}\NormalTok{ analyze.sh sequences.fa}
+\end{Highlighting}
+\end{Shaded}
+
+Run:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{sbatch}\NormalTok{ analyze.sbatch}
+\ExtensionTok{sq}
+\end{Highlighting}
+\end{Shaded}
+
+Once it finishes, inspect the \texttt{slurm-JOBID.out} file (replace \texttt{JOBID} with the actual number).
+
+\section{5: Save and transfer results}\label{save-and-transfer-results}
+
+From your laptop, retrieve the output with \texttt{rsync} (substitute the job ID and workshop username):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rsync} \AttributeTok{{-}avh}\NormalTok{ YOUR\_USERNAME@cbw.c3.ca:\textasciitilde{}/cbw{-}primer/challenge/slurm{-}JOBID.out ./}
+\end{Highlighting}
+\end{Shaded}
+
+\section{6: Stretch challenge}\label{stretch-challenge}
+
+Modify \texttt{analyze.sh} to accept multiple FASTA files, using a \texttt{for\ filename\ in\ "\$@"} loop. Consider how you would process hundreds of files using a Slurm job array rather than running one long serial task.
+
+\section{7. Best practices}\label{best-practices}
+
+\begin{itemize}
+\tightlist
+\item
+  Do NOT run the entire workflow in a single job!!!!!!
+\item
+  Estimate the walltime, RAM, CPUs etc by benchmarking the tools
+\item
+  Find the bottleneck of the tool
+\item
+  Avoid duplicating the large public dataset such as NCBI BLAST database, Kraken2, Alphafold3, ColabFold, gnomAD ete, which might be found at: \texttt{/cvmfs/bio.data.computecanada.ca}
+\item
+  Understand the pros/cons of different file systems, such as \texttt{\$SLURM\_TMPDIR}, \texttt{/scratch}, \texttt{/project}, \texttt{/home}, \texttt{/nearline}
+\end{itemize}
+
+\section{Wrap-up}\label{wrap-up}
+
+You have registered and logged in to an HPC training cluster, organized data, used environment modules, submitted and inspected a job, and run a reproducible bioinformatics script. For production work, benchmark resource usage and use the official cluster documentation and policies.
 
 \bibliography{book.bib,packages.bib}
 

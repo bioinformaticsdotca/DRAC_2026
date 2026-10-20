@@ -19,7 +19,13 @@ Welcome to the **Canadian Bioinformatics Workshops (CBW) DRAC Primer Session**. 
 
 You will learn how to connect, manage files, transfer data, use software, submit and monitor Slurm jobs, and access interactive computing resources. The workshop finishes with a short bioinformatics challenge.
 
-## Workshop details {-}
+## Slides {-}
+
+Please find below the slides for this session.
+
+<iframe src="https://docs.google.com/presentation/d/1tJsjwlbBPJRhd-OUeB8BnT2WnlwgTv_t/preview" width="640" height="480" allow="autoplay"></iframe>
+
+## Workshop Details {-}
 
 **Date:** Wednesday, October 28, 2026. 
 **Audience:** CBW participants who are new to Linux or HPC. 
@@ -33,7 +39,7 @@ You will learn how to connect, manage files, transfer data, use software, submit
 - The login host for this workshop is `@cbw.c3.ca`; do not use a personal DRAC cluster account unless instructed.
 - Use the workshop-specific instructions rather than assumptions about other DRAC clusters.
 
-## Course outline {-}
+## Course Outline {-}
 
 **Date:** Wednesday, October 28, 2026  
 **Time:** 11:00–15:00 PDT
@@ -51,7 +57,7 @@ You will learn how to connect, manage files, transfer data, use software, submit
 
 The session also includes instructor-led demonstrations, exercises and breaks. Follow the instructor's live timing announcements; the final timetable is distributed by CBW.
 
-## Getting help {-}
+## Getting Help {-}
 
 Ask an instructor during the session. You may share your screen if needed, but please avoid sharing passwords, or any other sensitive information.
 

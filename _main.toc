@@ -1,8 +1,53 @@
-\contentsline {chapter}{\numberline {1}DRAC Primer Info}{5}{chapter.1}%
-\contentsline {subsection}{\numberline {1.0.1}Data download}{5}{subsection.1.0.1}%
-\contentsline {subsection}{\numberline {1.0.2}Schedule}{5}{subsection.1.0.2}%
-\contentsline {chapter}{\numberline {2}Meet Your Faculty}{7}{chapter.2}%
-\contentsline {subsection}{\numberline {2.0.1}Instructors}{7}{subsection.2.0.1}%
-\contentsline {subsubsection}{\numberline {2.0.1.1}Jiarui Li}{7}{subsubsection.2.0.1.1}%
-\contentsline {subsection}{\numberline {2.0.2}Facilitator}{7}{subsection.2.0.2}%
-\contentsline {subsubsection}{\numberline {2.0.2.1}Tian Rabbani}{7}{subsubsection.2.0.2.1}%
+\contentsline {chapter}{Introduction}{5}{chapter*.2}%
+\contentsline {section}{Slides}{5}{section*.3}%
+\contentsline {section}{Workshop Details}{5}{section*.4}%
+\contentsline {subsection}{Before the session}{5}{section*.5}%
+\contentsline {section}{Course Outline}{6}{section*.6}%
+\contentsline {section}{Getting Help}{6}{section*.7}%
+\contentsline {chapter}{\numberline {1}Meet Your Faculty}{7}{chapter.1}%
+\contentsline {subsection}{\numberline {1.0.1}Instructors}{7}{subsection.1.0.1}%
+\contentsline {subsubsection}{\numberline {1.0.1.1}Jiarui Li}{7}{subsubsection.1.0.1.1}%
+\contentsline {subsection}{\numberline {1.0.2}Facilitator}{7}{subsection.1.0.2}%
+\contentsline {subsubsection}{\numberline {1.0.2.1}Tian Rabbani}{7}{subsubsection.1.0.2.1}%
+\contentsline {chapter}{\numberline {2}Module 1 - HPC infrastructure, registration and login}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Learning goals}{9}{section.2.1}%
+\contentsline {section}{\numberline {2.2}What is HPC?}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Typical workflow}{10}{section.2.3}%
+\contentsline {section}{\numberline {2.4}HPC terminology}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Register for the workshop}{11}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Connect by SSH}{11}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Exercise: first login}{11}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Common connection issues}{12}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Backup solution:}{12}{section.2.9}%
+\contentsline {chapter}{\numberline {3}Module 2: Working with directories and files}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Learning goals}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Explore the directory}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Create and inspect files}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}File transfer from your own computer}{14}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Exercise}{15}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Shared filesystem etiquette}{15}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Module 3. Software environments and reproducibility}{17}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Learning goals}{17}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Environment modules}{17}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Python virtual environments}{18}{section.4.3}%
+\contentsline {section}{\numberline {4.4}For those who would like to use Conda:}{18}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Exercise}{19}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Module 4. Submit and monitor jobs with Slurm}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Why use a scheduler?}{21}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Write a batch script}{21}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Understand resource requests}{22}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Monitor and diagnose jobs}{22}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Interactive allocations}{23}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}salloc}{23}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}JupyterHub}{23}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Exercise}{23}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Module 5. Bioinformatics Mini-Challenge}{25}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Goal}{25}{section.6.1}%
+\contentsline {section}{\numberline {6.2}1: Create a sample FASTA file}{25}{section.6.2}%
+\contentsline {section}{\numberline {6.3}2: Explore the data}{26}{section.6.3}%
+\contentsline {section}{\numberline {6.4}3: Build a simple analysis script}{26}{section.6.4}%
+\contentsline {section}{\numberline {6.5}4: Submit the analysis to Slurm}{26}{section.6.5}%
+\contentsline {section}{\numberline {6.6}5: Save and transfer results}{27}{section.6.6}%
+\contentsline {section}{\numberline {6.7}6: Stretch challenge}{27}{section.6.7}%
+\contentsline {section}{\numberline {6.8}7. Best practices}{27}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Wrap-up}{28}{section.6.9}%
