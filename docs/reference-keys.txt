@@ -1,8 +1,10 @@
 meet-your-faculty
 instructors
-jiarui-li
+jiarui-jerry-li-hehim
+teaching-assistant
+johnathan-wong-hehim
 facilitator
-tian-rabbani
+tian-rabbani-sheher
 module-1---hpc-infrastructure-registration-and-login
 learning-goals
 what-is-hpc

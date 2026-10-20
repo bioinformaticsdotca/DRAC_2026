@@ -6,9 +6,11 @@
 \contentsline {section}{Getting Help}{6}{section*.7}%
 \contentsline {chapter}{\numberline {1}Meet Your Faculty}{7}{chapter.1}%
 \contentsline {subsection}{\numberline {1.0.1}Instructors}{7}{subsection.1.0.1}%
-\contentsline {subsubsection}{\numberline {1.0.1.1}Jiarui Li}{7}{subsubsection.1.0.1.1}%
-\contentsline {subsection}{\numberline {1.0.2}Facilitator}{7}{subsection.1.0.2}%
-\contentsline {subsubsection}{\numberline {1.0.2.1}Tian Rabbani}{7}{subsubsection.1.0.2.1}%
+\contentsline {subsubsection}{\numberline {1.0.1.1}Jiarui (Jerry) Li (He/Him)}{7}{subsubsection.1.0.1.1}%
+\contentsline {subsection}{\numberline {1.0.2}Teaching Assistant}{7}{subsection.1.0.2}%
+\contentsline {subsubsection}{\numberline {1.0.2.1}Johnathan Wong (He/Him)}{7}{subsubsection.1.0.2.1}%
+\contentsline {subsection}{\numberline {1.0.3}Facilitator}{8}{subsection.1.0.3}%
+\contentsline {subsubsection}{\numberline {1.0.3.1}Tian Rabbani (She/Her)}{8}{subsubsection.1.0.3.1}%
 \contentsline {chapter}{\numberline {2}Module 1 - HPC infrastructure, registration and login}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Learning goals}{9}{section.2.1}%
 \contentsline {section}{\numberline {2.2}What is HPC?}{9}{section.2.2}%

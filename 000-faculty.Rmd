@@ -16,7 +16,7 @@ BIO GOES HERE-->
 
 
 
-#### Jiarui Li
+#### Jiarui (Jerry) Li (He/Him)
 
 <img src="./img/faculty/jiarui-li.png" width="225" alt="Photo of Zhibin Lu">
 
@@ -30,9 +30,25 @@ Jiarui (Jerry) Li is a Research Support Analyst at the University of Alberta and
 
 
 
+### Teaching Assistant
+
+#### Johnathan Wong (He/Him)
+
+<img src="./img/faculty/jwong.jpg" width="250" alt="Photo of Johnathan Wong">
+
+>PhD Candidate/Sessional Lecturer <br>
+The University of British Columbia, BC Cancer Research Institute <br>
+Richmond, BC, Canada
+>
+> --- johnathanwong4@gmail.com
+
+Johnathan Wong is a PhD candidate in Bioinformatics and a Sessional Lecturer at the University of British Columbia. His research interests focus on genomics, genome assembly, and epigenomics. Outside of research, he is passionate about teaching, solving puzzles, and exploring hiking trails.
+
+
+
 ### Facilitator
 
-#### Tian Rabbani
+#### Tian Rabbani (She/Her)
 
 <img src="./img/faculty/tian-rabbani.png" width="350" alt="Photo of Tian Rabbani">
 
